@@ -1,0 +1,48 @@
+unique_name: Revenue Reporting
+object_type: model
+label: New Model
+metrics: []
+relationships:
+  - unique_name: factinternetsales_productkey_to_Product Dimension_Product Code
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - productkey
+    to:
+      dimension: Product Dimension
+      level: Product Code
+  - unique_name: factinternetsales_salesterritorykey_to_Geography Dimension_Geography Join
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - salesterritorykey
+    to:
+      dimension: Geography Dimension
+      level: Geography Join
+  - unique_name: factinternetsales_orderdatekey_to_Date Dimension Generated_DateKeyDecimal
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - orderdatekey
+    role_play: order {0}
+    to:
+      dimension: Date Dimension Generated
+      level: DateKeyDecimal
+  - unique_name: factinternetsales_orderdatekey_to_Date Dimension Generated_Date Key Join
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - orderdatekey
+    role_play: Order{0}
+    to:
+      dimension: Date Dimension Generated
+      level: Date Key Join
+  - unique_name: factinternetsales_shipdatekey_to_Date Dimension Generated_Date Key Join
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - shipdatekey
+    role_play: Ship{0}
+    to:
+      dimension: Date Dimension Generated
+      level: Date Key Join
