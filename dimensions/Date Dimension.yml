@@ -1,7 +1,6 @@
-unique_name: Date Dimension Generated
+unique_name: Date Dimension
 object_type: dimension
-label: Date Dimension Generated
-description: Date Dimension for ISO8601 calendar with 2 hierarchies
+label: Date Dimension
 hierarchies:
   - unique_name: Date Month Hierarchy
     label: Date Month Hierarchy
@@ -97,7 +96,7 @@ hierarchies:
             name_column: week_of_year
             sort_column: week_of_year
       - unique_name: DayMonth
-      - unique_name: Date Key Join
+      - unique_name: W Date Key Join
 level_attributes:
   - unique_name: YearMonth
     label: Year
@@ -159,6 +158,17 @@ level_attributes:
     label: Date Key Join
     dataset: dim_time_dataset
     is_hidden: true
+    key_columns:
+      - datekey
+    name_column: date_name
+    sort_column: datekey
+    time_unit: day
+  - unique_name: W Date Key Join
+    label: W Date Key Join
+    contains_unique_names: false
+    dataset: dim_time_dataset
+    is_hidden: true
+    is_unique_key: false
     key_columns:
       - datekey
     name_column: date_name

@@ -1,7 +1,8 @@
 unique_name: Revenue Reporting
 object_type: model
-label: New Model
-metrics: []
+label: Revenue Reporting
+metrics:
+  - unique_name: Sales Amount Reporting Currency_sum
 relationships:
   - unique_name: factinternetsales_productkey_to_Product Dimension_Product Code
     from:
@@ -26,23 +27,58 @@ relationships:
         - orderdatekey
     role_play: order {0}
     to:
-      dimension: Date Dimension Generated
-      level: DateKeyDecimal
-  - unique_name: factinternetsales_orderdatekey_to_Date Dimension Generated_Date Key Join
+      dimension: Date Dimension
+      level: Date Key Join
+  - unique_name: factinternetsales_orderdatekey_to_Currency Dimension_Average Rate
     from:
       dataset: factinternetsales
       join_columns:
+        - currencykey
         - orderdatekey
-    role_play: Order{0}
     to:
-      dimension: Date Dimension Generated
-      level: Date Key Join
-  - unique_name: factinternetsales_shipdatekey_to_Date Dimension Generated_Date Key Join
+      dimension: Currency Dimension
+      level: Average Rate
+  - unique_name: factinternetsales_currencykey_to_Currency Dimension_Currency
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - currencykey
+    to:
+      dimension: Currency Dimension
+      level: Currency
+  - unique_name: factinternetsales_shipdatekey_to_Date Dimension_Date Key Join
     from:
       dataset: factinternetsales
       join_columns:
         - shipdatekey
     role_play: Ship{0}
     to:
-      dimension: Date Dimension Generated
+      dimension: Date Dimension
       level: Date Key Join
+  - unique_name: factinternetsales_orderdatekey_to_Date Dimension_Date Key Join
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - orderdatekey
+    role_play: Order{0}
+    to:
+      dimension: Date Dimension
+      level: Date Key Join
+  - unique_name: factinternetsales_shipdatekey_to_Date Dimension_W Date Key Join
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - shipdatekey
+    role_play: Ship{0}
+    to:
+      dimension: Date Dimension
+      level: W Date Key Join
+  - unique_name: factinternetsales_orderdatekey_to_Date Dimension_W Date Key Join
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - orderdatekey
+    role_play: Order{0}
+    to:
+      dimension: Date Dimension
+      level: W Date Key Join

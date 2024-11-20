@@ -54,5 +54,5 @@ columns:
     data_type: datetime
   - name: shipdate
     data_type: datetime
-connection_id: con_atscale-sales-demo_as_adventure_small_training
+connection_id: As_Adventure
 table: factinternetsales
