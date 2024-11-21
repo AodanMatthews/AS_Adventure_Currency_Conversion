@@ -6,31 +6,15 @@ hierarchies:
     label: Currency Hierarchy
     levels:
       - unique_name: Currency
-      - unique_name: Average Rate
 level_attributes:
   - unique_name: Currency
     label: Currency
     contains_unique_names: false
     dataset: dimcurrency
+    is_hidden: true
     is_unique_key: false
     key_columns:
       - currencykey
     name_column: currencyalternatekey
-  - unique_name: Average Rate
-    label: Average Rate
-    contains_unique_names: false
-    dataset: factcurrencyrate
-    is_unique_key: false
-    key_columns:
-      - currencykey
-      - datekey
-    name_column: averagerate
-relationships:
-  - from:
-      dataset: factcurrencyrate
-      join_columns:
-        - currencykey
-    to:
-      level: Currency
-    type: snowflake
+relationships: []
 type: standard

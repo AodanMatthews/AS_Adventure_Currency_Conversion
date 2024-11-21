@@ -1,8 +1,12 @@
 unique_name: Revenue Reporting
 object_type: model
 label: Revenue Reporting
+dimensions: []
 metrics:
-  - unique_name: Sales Amount Reporting Currency_sum
+  - unique_name: Sales Amount Base Currency_sum
+  - unique_name: Order Quantity_sum
+  - unique_name: Sales Amount Converted Currency
+  - unique_name: Average Rate_sum
 relationships:
   - unique_name: factinternetsales_productkey_to_Product Dimension_Product Code
     from:
@@ -20,32 +24,6 @@ relationships:
     to:
       dimension: Geography Dimension
       level: Geography Join
-  - unique_name: factinternetsales_orderdatekey_to_Date Dimension Generated_DateKeyDecimal
-    from:
-      dataset: factinternetsales
-      join_columns:
-        - orderdatekey
-    role_play: order {0}
-    to:
-      dimension: Date Dimension
-      level: Date Key Join
-  - unique_name: factinternetsales_orderdatekey_to_Currency Dimension_Average Rate
-    from:
-      dataset: factinternetsales
-      join_columns:
-        - currencykey
-        - orderdatekey
-    to:
-      dimension: Currency Dimension
-      level: Average Rate
-  - unique_name: factinternetsales_currencykey_to_Currency Dimension_Currency
-    from:
-      dataset: factinternetsales
-      join_columns:
-        - currencykey
-    to:
-      dimension: Currency Dimension
-      level: Currency
   - unique_name: factinternetsales_shipdatekey_to_Date Dimension_Date Key Join
     from:
       dataset: factinternetsales
@@ -82,3 +60,28 @@ relationships:
     to:
       dimension: Date Dimension
       level: W Date Key Join
+  - unique_name: factcurrencyrate_conversion_datekey_to_Date Dimension_W Date Key Join
+    from:
+      dataset: factcurrencyrate_conversion
+      join_columns:
+        - datekey
+    to:
+      dimension: Date Dimension
+      level: W Date Key Join
+  - unique_name: factcurrencyrate_conversion_datekey_to_FX Dimension_FX Date
+    from:
+      dataset: factcurrencyrate_conversion
+      join_columns:
+        - datekey
+    to:
+      dimension: FX Dimension
+      level: FX Date
+  - unique_name: factinternetsales_orderdatekey_to_FX Dimension_FX Date
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - orderdatekey
+    role_play: Order{0}
+    to:
+      dimension: FX Dimension
+      level: FX Date

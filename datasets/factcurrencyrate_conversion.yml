@@ -1,0 +1,27 @@
+unique_name: factcurrencyrate_conversion
+object_type: dataset
+label: factcurrencyrate_conversion
+columns:
+  - name: datekey
+    data_type: long
+  - name: currencykey_from
+    data_type: long
+  - name: currencykey_to
+    data_type: long
+  - name: avaragerate
+    data_type: double
+connection_id: As_Adventure
+sql: |2+
+
+    Select 
+    curFrom.currencykey as currencykey_from,
+    curTo.currencykey as currencykey_to,
+    curFrom.datekey as datekey,
+    curFrom.averagerate / curTo.averagerate as avaragerate
+    from 
+    `atscale-sales-demo.as_adventure_small_training.factcurrencyrate`  curFrom
+    join `atscale-sales-demo.as_adventure_small_training.factcurrencyrate`  curTo
+    on curTo.datekey = curfrom.datekey
+    where
+    curto.currencykey in (36,98,100)
+

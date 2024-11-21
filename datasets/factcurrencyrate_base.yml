@@ -1,6 +1,6 @@
-unique_name: factcurrencyrate
+unique_name: factcurrencyrate_base
 object_type: dataset
-label: factcurrencyrate
+label: factcurrencyrate_base
 columns:
   - name: currencykey
     data_type: long

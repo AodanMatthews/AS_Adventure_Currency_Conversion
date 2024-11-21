@@ -15,16 +15,6 @@ hierarchies:
       - unique_name: Style
       - unique_name: Weight
       - unique_name: Product Code
-        secondary_attributes:
-          - unique_name: Product Code Degen
-            label: Product Code
-            contains_unique_names: false
-            dataset: dimproduct
-            is_unique_key: false
-            key_columns:
-              - productrank
-            name_column: productkey
-            sort_column: productrank
 level_attributes:
   - unique_name: Product Category
     label: Product Category
@@ -62,12 +52,10 @@ level_attributes:
     label: Product Code
     contains_unique_names: false
     dataset: dimproduct
-    is_hidden: true
     is_unique_key: false
     key_columns:
       - productkey
     name_column: productkey
-    sort_column: productrank
   - unique_name: Color
     label: Color
     contains_unique_names: false
