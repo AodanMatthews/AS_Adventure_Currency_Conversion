@@ -1,4 +1,4 @@
-unique_name: Average Rate_sum
+unique_name: Average Rate
 object_type: metric
 label: Average Rate
 calculation_method: average

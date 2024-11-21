@@ -6,6 +6,11 @@ hierarchies:
     label: Fx Date Hierarchy
     levels:
       - unique_name: FX Date
+  - unique_name: Reporting Currency Hierarchy
+    label: Reporting Currency
+    levels:
+      - unique_name: Reporting Currency
+      - unique_name: Reporting Currency Join
 level_attributes:
   - unique_name: FX Date
     label: FX Date
@@ -16,6 +21,22 @@ level_attributes:
     key_columns:
       - datekey
     name_column: datekey
+  - unique_name: Reporting Currency
+    label: Reporting Currency
+    contains_unique_names: false
+    dataset: dimcurrency
+    is_unique_key: false
+    key_columns:
+      - currencykey
+    name_column: currencyalternatekey
+  - unique_name: Reporting Currency Join
+    label: Reporting Currency Join
+    contains_unique_names: false
+    dataset: factcurrencyrate_conversion
+    is_unique_key: false
+    key_columns:
+      - currencykey_to
+    name_column: currencykey_to
 relationships:
   - unique_name: factcurrencyrate_conversion_datekey_to_Date Dimension_Date Key Join
     from:
@@ -65,3 +86,11 @@ relationships:
       dimension: Currency Dimension
       level: Currency
     type: embedded
+  - from:
+      dataset: factcurrencyrate_conversion
+      join_columns:
+        - currencykey_to
+    to:
+      level: Reporting Currency
+    type: snowflake
+type: standard

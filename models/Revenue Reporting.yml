@@ -6,7 +6,7 @@ metrics:
   - unique_name: Sales Amount Base Currency_sum
   - unique_name: Order Quantity_sum
   - unique_name: Sales Amount Converted Currency
-  - unique_name: Average Rate_sum
+  - unique_name: Average Rate
 relationships:
   - unique_name: factinternetsales_productkey_to_Product Dimension_Product Code
     from:

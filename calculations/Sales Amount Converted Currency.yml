@@ -1,5 +1,5 @@
 unique_name: Sales Amount Converted Currency
 object_type: metric_calc
 label: Sales Amount Converted Currency
-expression: '[Measures].[Sales Amount Base Currency_sum]*[Measures].[Average Rate_sum]'
+expression: '[Measures].[Sales Amount Base Currency_sum]*[Measures].[Average Rate]'
 is_hidden: false
