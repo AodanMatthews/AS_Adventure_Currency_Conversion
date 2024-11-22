@@ -33,6 +33,7 @@ level_attributes:
     label: Reporting Currency Join
     contains_unique_names: false
     dataset: factcurrencyrate_conversion
+    is_hidden: true
     is_unique_key: false
     key_columns:
       - currencykey_to
