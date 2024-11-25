@@ -38,7 +38,7 @@ relationships:
       dataset: factinternetsales
       join_columns:
         - orderdatekey
-    role_play: Order{0}
+    role_play: Order {0}
     to:
       dimension: Date Dimension
       level: Date Key Join
@@ -56,7 +56,7 @@ relationships:
       dataset: factinternetsales
       join_columns:
         - orderdatekey
-    role_play: Order{0}
+    role_play: Order {0}
     to:
       dimension: Date Dimension
       level: W Date Key Join
@@ -81,7 +81,25 @@ relationships:
       dataset: factinternetsales
       join_columns:
         - orderdatekey
-    role_play: Order{0}
+    role_play: Order {0}
     to:
       dimension: FX Dimension
       level: FX Date
+  - unique_name: >-
+      factcurrencyrate_conversion_currencykey_to_to_FX Dimension_Reporting
+      Currency Join
+    from:
+      dataset: factcurrencyrate_conversion
+      join_columns:
+        - currencykey_to
+    to:
+      dimension: FX Dimension
+      level: Reporting Currency Join
+  - unique_name: factinternetsales_currencykey_to_FX Dimension_Base Currency Join
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - currencykey
+    to:
+      dimension: FX Dimension
+      level: Base Currency Join
