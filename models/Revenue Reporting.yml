@@ -60,22 +60,6 @@ relationships:
     to:
       dimension: Date Dimension
       level: W Date Key Join
-  - unique_name: factcurrencyrate_conversion_datekey_to_Date Dimension_W Date Key Join
-    from:
-      dataset: factcurrencyrate_conversion
-      join_columns:
-        - datekey
-    to:
-      dimension: Date Dimension
-      level: W Date Key Join
-  - unique_name: factcurrencyrate_conversion_datekey_to_FX Dimension_FX Date
-    from:
-      dataset: factcurrencyrate_conversion
-      join_columns:
-        - datekey
-    to:
-      dimension: FX Dimension
-      level: FX Date
   - unique_name: factinternetsales_orderdatekey_to_FX Dimension_FX Date
     from:
       dataset: factinternetsales
@@ -103,3 +87,29 @@ relationships:
     to:
       dimension: FX Dimension
       level: Base Currency Join
+  - unique_name: factcurrencyrate_conversion_productkey_to_Product Dimension_Product Code
+    from:
+      dataset: factcurrencyrate_conversion
+      join_columns:
+        - productkey
+    to:
+      dimension: Product Dimension
+      level: Product Code
+  - unique_name: >-
+      factcurrencyrate_conversion_salesterritorykey_to_Geography
+      Dimension_Geography Join
+    from:
+      dataset: factcurrencyrate_conversion
+      join_columns:
+        - salesterritorykey
+    to:
+      dimension: Geography Dimension
+      level: Geography Join
+  - unique_name: factcurrencyrate_conversion_datekey_to_FX Dimension_FX Date
+    from:
+      dataset: factcurrencyrate_conversion
+      join_columns:
+        - datekey
+    to:
+      dimension: FX Dimension
+      level: FX Date
