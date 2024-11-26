@@ -2,38 +2,17 @@ unique_name: FX Dimension
 object_type: dimension
 label: FX Dimension
 hierarchies:
-  - unique_name: Fx Date Hierarchy
-    label: Fx Date Hierarchy
-    filter_empty: 'yes'
-    levels:
-      - unique_name: FX Date
   - unique_name: Reporting Currency Hierarchy
     label: Reporting Currency
     filter_empty: 'yes'
     levels:
       - unique_name: Reporting Currency
       - unique_name: Reporting Currency Join
-  - unique_name: Base Currency Hierarchy
-    label: Base Currency Hierarchy
-    filter_empty: 'yes'
-    levels:
-      - unique_name: Base Currency
-      - unique_name: Base Currency Join
 level_attributes:
-  - unique_name: FX Date
-    label: FX Date
-    contains_unique_names: false
-    dataset: factcurrencyrate_conversion
-    is_hidden: true
-    is_unique_key: false
-    key_columns:
-      - datekey
-    name_column: datekey
   - unique_name: Reporting Currency
     label: Reporting Currency
     contains_unique_names: false
     dataset: dimcurrency
-    is_hidden: true
     is_unique_key: false
     key_columns:
       - currencykey
@@ -46,86 +25,14 @@ level_attributes:
     is_unique_key: false
     key_columns:
       - currencykey_to
+      - datekey
     name_column: currencykey_to
-  - unique_name: Base Currency
-    label: Base Currency
-    contains_unique_names: false
-    dataset: dimcurrency
-    is_hidden: true
-    is_unique_key: false
-    key_columns:
-      - currencykey
-    name_column: currencyalternatekey
-  - unique_name: Base Currency Join
-    label: Base Currency Join
-    contains_unique_names: false
-    dataset: factcurrencyrate_conversion
-    is_hidden: true
-    is_unique_key: false
-    key_columns:
-      - currencykey_from
-    name_column: currencykey_from
 relationships:
-  - unique_name: factcurrencyrate_conversion_datekey_to_Date Dimension_Date Key Join
-    from:
-      dataset: factcurrencyrate_conversion
-      hierarchy: Fx Date Hierarchy
-      join_columns:
-        - datekey
-      level: FX Date
-    to:
-      dimension: Date Dimension
-      level: Date Key Join
-    type: embedded
-  - unique_name: factcurrencyrate_conversion_datekey_to_Date Dimension_W Date Key Join
-    from:
-      dataset: factcurrencyrate_conversion
-      hierarchy: Fx Date Hierarchy
-      join_columns:
-        - datekey
-      level: FX Date
-    to:
-      dimension: Date Dimension
-      level: W Date Key Join
-    type: embedded
-  - unique_name: factcurrencyrate_conversion_currencykey_to_to_Currency Dimension_Currency
-    from:
-      dataset: factcurrencyrate_conversion
-      hierarchy: Fx Date Hierarchy
-      join_columns:
-        - currencykey_to
-      level: FX Date
-    role_play: Reporting {0}
-    to:
-      dimension: Currency Dimension
-      level: Currency
-    type: embedded
-  - unique_name: >-
-      factcurrencyrate_conversion_currencykey_from_to_Currency
-      Dimension_Currency
-    from:
-      dataset: factcurrencyrate_conversion
-      hierarchy: Fx Date Hierarchy
-      join_columns:
-        - currencykey_from
-      level: FX Date
-    role_play: Base {0}
-    to:
-      dimension: Currency Dimension
-      level: Currency
-    type: embedded
   - from:
       dataset: factcurrencyrate_conversion
       join_columns:
         - currencykey_to
     to:
       level: Reporting Currency
-    type: snowflake
-  - from:
-      dataset: factcurrencyrate_conversion
-      join_columns:
-        - currencykey_from
-    to:
-      level: Base Currency
     type: snowflake
 type: standard

@@ -60,33 +60,6 @@ relationships:
     to:
       dimension: Date Dimension
       level: W Date Key Join
-  - unique_name: factinternetsales_orderdatekey_to_FX Dimension_FX Date
-    from:
-      dataset: factinternetsales
-      join_columns:
-        - orderdatekey
-    role_play: Order {0}
-    to:
-      dimension: FX Dimension
-      level: FX Date
-  - unique_name: >-
-      factcurrencyrate_conversion_currencykey_to_to_FX Dimension_Reporting
-      Currency Join
-    from:
-      dataset: factcurrencyrate_conversion
-      join_columns:
-        - currencykey_to
-    to:
-      dimension: FX Dimension
-      level: Reporting Currency Join
-  - unique_name: factinternetsales_currencykey_to_FX Dimension_Base Currency Join
-    from:
-      dataset: factinternetsales
-      join_columns:
-        - currencykey
-    to:
-      dimension: FX Dimension
-      level: Base Currency Join
   - unique_name: factcurrencyrate_conversion_productkey_to_Product Dimension_Product Code
     from:
       dataset: factcurrencyrate_conversion
@@ -105,11 +78,63 @@ relationships:
     to:
       dimension: Geography Dimension
       level: Geography Join
-  - unique_name: factcurrencyrate_conversion_datekey_to_FX Dimension_FX Date
+  - unique_name: factcurrencyrate_conversion_datekey_to_Date Dimension_W Date Key Join
     from:
       dataset: factcurrencyrate_conversion
       join_columns:
         - datekey
     to:
-      dimension: FX Dimension
-      level: FX Date
+      dimension: Date Dimension
+      level: W Date Key Join
+  - unique_name: factcurrencyrate_conversion_datekey_to_Date Dimension_Date Key Join
+    from:
+      dataset: factcurrencyrate_conversion
+      join_columns:
+        - datekey
+    to:
+      dimension: Date Dimension
+      level: Date Key Join
+  - unique_name: >-
+      factcurrencyrate_conversion_currencykey_from_to_Currency
+      Dimension_Currency
+    from:
+      dataset: factcurrencyrate_conversion
+      join_columns:
+        - currencykey_from
+    to:
+      dimension: Currency Dimension
+      level: Base Currency
+  - unique_name: factinternetsales_currencykey_to_Currency Dimension_Base Currency
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - currencykey
+    to:
+      dimension: Currency Dimension
+      level: Base Currency
+  - unique_name: factinternetsales_orderdatekey_to_Currency Dimension_Reporting Date
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - orderdatekey
+    to:
+      dimension: Currency Dimension
+      level: Reporting Date
+  - unique_name: factcurrencyrate_conversion_datekey_to_Currency Dimension_Reporting Date
+    from:
+      dataset: factcurrencyrate_conversion
+      join_columns:
+        - datekey
+    to:
+      dimension: Currency Dimension
+      level: Reporting Date
+  - unique_name: >-
+      factcurrencyrate_conversion_currencykey_to_to_Currency Dimension_Reporting
+      Currency Join
+    from:
+      dataset: factcurrencyrate_conversion
+      join_columns:
+        - currencykey_to
+    to:
+      dimension: Currency Dimension
+      level: Reporting Currency Join
