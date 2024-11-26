@@ -1,6 +1,6 @@
-unique_name: dimcurrency
+unique_name: dimcurrency_reporting
 object_type: dataset
-label: dimcurrency
+label: dimcurrency_reporting
 columns:
   - name: currencykey
     data_type: long

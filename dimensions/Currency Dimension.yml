@@ -1,6 +1,6 @@
 unique_name: Currency Dimension
 object_type: dimension
-label: Currency
+label: Currency Dimension
 hierarchies:
   - unique_name: Base Currency Hierarchy
     label: Base Currency Hierarchy
@@ -18,7 +18,7 @@ level_attributes:
   - unique_name: Base Currency
     label: Base Currency
     contains_unique_names: false
-    dataset: dimcurrency_sales
+    dataset: dimcurrency_base
     is_unique_key: false
     key_columns:
       - currencykey
@@ -35,7 +35,7 @@ level_attributes:
   - unique_name: Reporting Currency
     label: Reporting Currency
     contains_unique_names: false
-    dataset: dimcurrency
+    dataset: dimcurrency_reporting
     is_unique_key: false
     key_columns:
       - currencykey

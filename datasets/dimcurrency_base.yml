@@ -1,4 +1,4 @@
-unique_name: dimcurrency_sales
+unique_name: dimcurrency_base
 object_type: dataset
 label: dimcurrency_base
 columns:
