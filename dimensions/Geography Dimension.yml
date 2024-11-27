@@ -5,8 +5,9 @@ hierarchies:
   - unique_name: Geography Hierarchy
     label: Geography Hierarchy
     levels:
-      - unique_name: Region
+      - unique_name: Group
       - unique_name: Country
+      - unique_name: Region
       - unique_name: City
       - unique_name: Geography Join
 level_attributes:
@@ -21,11 +22,11 @@ level_attributes:
   - unique_name: Country
     label: Country
     contains_unique_names: false
-    dataset: dimgeography
+    dataset: dimsalesterritory
     is_unique_key: false
     key_columns:
-      - countryregioncode
-    name_column: englishcountryregionname
+      - salesterritorykey
+    name_column: salesterritorycountry
   - unique_name: City
     label: City
     contains_unique_names: false
@@ -43,6 +44,14 @@ level_attributes:
     key_columns:
       - salesterritorykey
     name_column: salesterritorykey
+  - unique_name: Group
+    label: Group
+    contains_unique_names: false
+    dataset: dimsalesterritory
+    is_unique_key: false
+    key_columns:
+      - salesterritorykey
+    name_column: salesterritorygroup
 relationships:
   - from:
       dataset: dimgeography
