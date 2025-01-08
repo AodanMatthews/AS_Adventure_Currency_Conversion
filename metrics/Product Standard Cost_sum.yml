@@ -4,3 +4,4 @@ label: Product Standard Cost
 calculation_method: sum
 column: productstandardcost
 dataset: factinternetsales
+format: '#,###.00;(#,###.00)'

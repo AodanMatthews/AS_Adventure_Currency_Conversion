@@ -3,7 +3,7 @@ object_type: dimension
 label: Date Dimension
 
 calculation_groups:
-  - unique_name: year Intelligence
+  - unique_name: Year Intelligence
     label: Year Intelligence
     description: Yearly time intelligence to apply to other measures
     calculated_members:

@@ -4,3 +4,4 @@ label: Average Rate
 calculation_method: average
 column: avaragerate
 dataset: factcurrencyrate_conversion
+format: '#,###.000;(#,###.000)'

@@ -4,3 +4,4 @@ label: Unit Price
 calculation_method: average
 column: unitprice
 dataset: factinternetsales
+format: '#,###.00;(#,###.00)'

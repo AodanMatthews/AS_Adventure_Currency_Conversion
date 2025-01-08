@@ -1,6 +1,20 @@
 unique_name: Currency Dimension
 object_type: dimension
 label: Currency Dimension
+calculation_groups:
+  - unique_name: Currency Conversion
+    label: Currency Conversion
+    description: Currency Conversion to apply to other measures
+    calculated_members:
+      - unique_name: Reporting Currency
+        name: Reporting Currency
+        description: reporting currency conversions for base measures
+        expression: >-
+          SUM( {[Currency Dimension].[Reporting Currency Hierarchy].CurrentMember.Parent.FirstChild : [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember}, [Measures].currentMember * [Measures].[Average Rate] )
+        format: '#,###.0;(#,###.0)'
+    folder: Currency Conversion
+
+
 hierarchies:
   - unique_name: Base Currency Hierarchy
     label: Base Currency Hierarchy
