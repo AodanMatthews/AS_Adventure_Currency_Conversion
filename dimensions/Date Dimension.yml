@@ -15,14 +15,6 @@ calculation_groups:
           [Date Dimension].[Date Month Hierarchy].CurrentMember),[Measures].currentMember)
         format: '#,###.0;(#,###.0)'
 
-      - unique_name: QTD
-        name: QTD
-        description: Quarter to Date
-        expression: >-
-          Sum(PeriodsToDate([Date Dimension].[Date Month Hierarchy].[Quarter],
-          [Date Dimension].[Date Month Hierarchy].CurrentMember),[Measures].currentMember)
-        format: '#,###.0;(#,###.0)'
-
       - unique_name: PY
         name: PY
         description: Previous Year
