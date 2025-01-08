@@ -11,7 +11,7 @@ calculation_groups:
         description: reporting currency conversions for base measures
         expression: >-
           SUM( {[Currency Dimension].[Reporting Currency Hierarchy].CurrentMember.Parent.FirstChild : [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember}, [Measures].currentMember * [Measures].[Average Rate] )
-        format: '#,###.0;(#,###.0)'
+        format: '#,###.00;(#,###.00)'
     folder: Currency Conversion
 
 
