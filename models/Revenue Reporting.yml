@@ -4,7 +4,7 @@ label: Revenue Reporting
 dimensions: []
 metrics:
 
-  - unique_name: Average Rate
+  - unique_name: Actual Rate
   - unique_name: Order Quantity_sum
 
 

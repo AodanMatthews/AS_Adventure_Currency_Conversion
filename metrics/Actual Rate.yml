@@ -1,6 +1,6 @@
-unique_name: Average Rate
+unique_name: Actual Rate
 object_type: metric
-label: Average Rate
+label: Actual Rate
 calculation_method: average
 column: averagerate
 dataset: factcurrencyrate_conversion

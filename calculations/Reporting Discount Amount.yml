@@ -1,6 +1,6 @@
 unique_name: Reporting Discount Amount
 object_type: metric_calc
 label: Reporting Discount Amount
-expression: '[Measures].[Discount Amount_sum]*[Measures].[Average Rate]'
+expression: '[Measures].[Discount Amount_sum]*[Measures].[Actual Rate]'
 format: '#,###.00;(#,###.00)'
 is_hidden: false
