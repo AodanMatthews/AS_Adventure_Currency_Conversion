@@ -3,9 +3,13 @@ object_type: model
 label: Revenue Reporting
 dimensions: []
 metrics:
-  - unique_name: Actual Rate
-  - unique_name: Budgeted Rate
   - unique_name: Order Quantity_sum
+
+  - unique_name: Actual Rate
+    folder: FX Rates
+  - unique_name: Budgeted Rate
+    folder: FX Rates
+
   - unique_name: Actual Unit Price
     folder: Actual Reporting Amounts
   - unique_name: Actual Unit Price Discount

@@ -4,6 +4,7 @@ label: Sales Amount MoM
 expression: >-
   (([Date Dimension].[Date Month Hierarchy].CurrentMember, [Measures].[Sales
   Amount_sum]) - (ParallelPeriod([Date Dimension].[Date Month
-  Hierarchy].[Month], 1, [Date Dimension].[Date Month
-  Hierarchy].CurrentMember), [Measures].[Sales Amount_sum] ))
+  Hierarchy].[Month], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember),
+  [Measures].[Sales Amount_sum] ))
+format: '#,###.00;(#,###.00)'
 is_hidden: false
