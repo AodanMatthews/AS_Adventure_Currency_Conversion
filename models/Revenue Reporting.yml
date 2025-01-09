@@ -7,6 +7,7 @@ metrics:
   - unique_name: Budgeted Rate
   - unique_name: Order Quantity_sum
   - unique_name: Actual Unit Price
+  
     folder: Actual Reporting Amounts
   - unique_name: Actual Unit Price Discount
     folder: Actual Reporting Amounts
@@ -22,6 +23,7 @@ metrics:
     folder: Actual Reporting Amounts
   - unique_name: Actual Total Product Cost
     folder: Actual Reporting Amounts
+
   - unique_name: Budgeted Unit Price
     folder: Budgeted Reporting Amounts
   - unique_name: Budgeted Unit Price Discount
@@ -38,6 +40,7 @@ metrics:
     folder: Budgeted Reporting Amounts
   - unique_name: Budgeted Total Product Cost
     folder: Budgeted Reporting Amounts
+
   - unique_name: Unit Price
     folder: Base Currency Amounts
   - unique_name: Unit Price Discount

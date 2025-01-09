@@ -7,7 +7,7 @@ calculation_groups:
     description: Actuals Vs Budgeted rate currency Conversions applied to other measures
     calculated_members:
       - unique_name: Actual Rates
-        name: AActual Rates
+        name: Actual Rates
         description: Actual reporting currency rate conversions for base measures
         expression: >-
           SUM( {[Currency Dimension].[Reporting Currency Hierarchy].CurrentMember.Parent.FirstChild : [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember}, [Measures].currentMember * [Measures].[Actual Rate] )
@@ -18,8 +18,26 @@ calculation_groups:
         expression: >-
           SUM( {[Currency Dimension].[Reporting Currency Hierarchy].CurrentMember.Parent.FirstChild : [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember}, [Measures].currentMember * [Measures].[Budgeted Rate] )
         format: '#,###.00;(#,###.00)'  
-
     folder: Currency Conversion
+
+  - unique_name: Actuals Vs Budgeted KPIS
+    label: Actuals Vs Budgeted KPIS
+    description: Actuals Vs Budgeted rate currency Conversions applied to other measures
+    calculated_members:
+      - unique_name: Actuals YTD
+        name: Actual Rates YTD
+        description: Actual reporting currency rate conversions for base measures
+        expression: >-
+          Sum(PeriodsToDate([Date Dimension].[Date Month Hierarchy].[YearMonth], [Date Dimension].[Date Month Hierarchy].CurrentMember),[Measures].currentMember * [Measures].[Actual Rate])  
+        format: '#,###.00;(#,###.00)'
+
+      - unique_name: Budgeted YTD
+        name: Budgeted Rates YTD
+        description: Budgeted reporting currency rate conversions for base measures
+        expression: >-
+          Sum(PeriodsToDate([Date Dimension].[Date Month Hierarchy].[YearMonth], [Date Dimension].[Date Month Hierarchy].CurrentMember),[Measures].currentMember * [Measures].[Budgeted Rate])
+        format: '#,###.0;(#,###.0)'
+    folder: Yearly Averages
 
 
 hierarchies:
