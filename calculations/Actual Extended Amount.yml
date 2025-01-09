@@ -1,6 +1,6 @@
-unique_name: Reporting Extended Amount
+unique_name: Actual Extended Amount
 object_type: metric_calc
-label: Reporting Extended Amount
+label: Actual Extended Amount
 expression: '[Measures].[Extended Amount_sum]*[Measures].[Actual Rate]'
 format: '#,###.00;(#,###.00)'
 is_hidden: false

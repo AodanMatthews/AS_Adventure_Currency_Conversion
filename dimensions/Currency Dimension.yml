@@ -2,21 +2,16 @@ unique_name: Currency Dimension
 object_type: dimension
 label: Currency Dimension
 calculation_groups:
-  - unique_name: Actual Rate Conversion
-    label: Actual Rate Conversion
-    description: Actual Rate Currency Conversion to apply to other measures
+  - unique_name: Actuals Vs Budgeted Rates
+    label: Actuals Vs Budgeted Rates
+    description: Actuals Vs Budgeted rate currency Conversions applied to other measures
     calculated_members:
       - unique_name: Actual Rates
         name: AActual Rates
         description: Actual reporting currency rate conversions for base measures
         expression: >-
-          SUM( {[Currency Dimension].[Reporting Currency Hierarchy].CurrentMember.Parent.FirstChild : [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember}, [Measures].currentMember * [Measures].[Average Rate] )
+          SUM( {[Currency Dimension].[Reporting Currency Hierarchy].CurrentMember.Parent.FirstChild : [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember}, [Measures].currentMember * [Measures].[Actual Rate] )
         format: '#,###.00;(#,###.00)'
-
-  - unique_name: Budgeted Rate Conversion
-    label: Budgeted Rate Conversion
-    description: Budgeted Rate Currency Conversion to apply to other measures
-    calculated_members:
       - unique_name: Budgeted Rates
         name: Budgeted Rates
         description: Budgeted reporting currency rate conversions for base measures

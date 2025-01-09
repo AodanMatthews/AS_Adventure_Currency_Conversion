@@ -1,0 +1,6 @@
+unique_name: Budgeted Unit Price Discount
+object_type: metric_calc
+label: Budgeted Unit Price Discount
+expression: '[Measures].[Unit Price Discount]*[Measures].[Budgeted Rate]'
+format: '#,###.00;(#,###.00)'
+is_hidden: false

@@ -1,0 +1,6 @@
+unique_name: Budgeted Total Product Cost
+object_type: metric_calc
+label: Budgeted Total Product Cost
+expression: '[Measures].[Total Product Cost_sum]*[Measures].[Budgeted Rate]'
+format: '#,###.00;(#,###.00)'
+is_hidden: false
