@@ -1,0 +1,6 @@
+unique_name: Sales Amount PY
+object_type: metric_calc
+label: Sales Amount PY
+expression: |-
+  (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Sales Amount_sum])
+is_hidden: false

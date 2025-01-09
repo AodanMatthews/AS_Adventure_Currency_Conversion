@@ -7,7 +7,6 @@ metrics:
   - unique_name: Budgeted Rate
   - unique_name: Order Quantity_sum
   - unique_name: Actual Unit Price
-  
     folder: Actual Reporting Amounts
   - unique_name: Actual Unit Price Discount
     folder: Actual Reporting Amounts
@@ -23,7 +22,7 @@ metrics:
     folder: Actual Reporting Amounts
   - unique_name: Actual Total Product Cost
     folder: Actual Reporting Amounts
-
+    
   - unique_name: Budgeted Unit Price
     folder: Budgeted Reporting Amounts
   - unique_name: Budgeted Unit Price Discount
@@ -57,6 +56,19 @@ metrics:
     folder: Base Currency Amounts
   - unique_name: Total Product Cost_sum
     folder: Base Currency Amounts
+
+  - unique_name: Sales Amount YTD
+    folder: KPIs
+  - unique_name: Sales Amount YoY
+    folder: KPIs
+  - unique_name: Sales Amount PY
+    folder: KPIs
+  - unique_name: Sales Amount MTD
+    folder: KPIs
+  - unique_name: Sales Amount MoM
+    folder: KPIs
+  - unique_name: Sales Amount PM
+    folder: KPIs
 
 relationships:
   - unique_name: factinternetsales_productkey_to_Product Dimension_Product Code
