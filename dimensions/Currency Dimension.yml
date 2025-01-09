@@ -2,13 +2,13 @@ unique_name: Currency Dimension
 object_type: dimension
 label: Currency Dimension
 calculation_groups:
-  - unique_name: Currency Conversion
-    label: Currency Conversion
-    description: Currency Conversion to apply to other measures
+  - unique_name: Actual Rate Conversion
+    label: Actual Rate Conversion
+    description: Actual Rate Currency Conversion to apply to other measures
     calculated_members:
-      - unique_name: Reporting Currency
-        name: Reporting Currency
-        description: reporting currency conversions for base measures
+      - unique_name: Actual Rates
+        name: AActual Rates
+        description: Actual reporting currency rate conversions for base measures
         expression: >-
           SUM( {[Currency Dimension].[Reporting Currency Hierarchy].CurrentMember.Parent.FirstChild : [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember}, [Measures].currentMember * [Measures].[Average Rate] )
         format: '#,###.00;(#,###.00)'
@@ -17,9 +17,9 @@ calculation_groups:
     label: Budgeted Rate Conversion
     description: Budgeted Rate Currency Conversion to apply to other measures
     calculated_members:
-      - unique_name: Budgeted Currency
-        name: Budgeted Currency
-        description: Budgeted currency conversions for base measures
+      - unique_name: Budgeted Rates
+        name: Budgeted Rates
+        description: Budgeted reporting currency rate conversions for base measures
         expression: >-
           SUM( {[Currency Dimension].[Reporting Currency Hierarchy].CurrentMember.Parent.FirstChild : [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember}, [Measures].currentMember * [Measures].[Budgeted Rate] )
         format: '#,###.00;(#,###.00)'  
