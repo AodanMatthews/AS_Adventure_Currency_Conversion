@@ -18,8 +18,6 @@ columns:
     data_type: double
 connection_id: As_Adventure
 sql: |2-
-
-
         WITH CurrencyRates AS
           (
           SELECT 
@@ -27,7 +25,7 @@ sql: |2-
           curTo.currencykey as currencykey_to,
           curFrom.datekey as datekey,
           curFrom.averagerate / curTo.averagerate as averagerate,
-          AVG(curFrom.averagerate / curTo.averagerate) OVER(PARTITION BY curFrom.currencykey, curTo.currencykey, LEFT(cast(curFrom.datekey AS STRING),4) ) as budgetedrate
+          (curFrom.averagerate / curTo.averagerate)*1.05 as budgetedrate
 
           FROM
           `atscale-sales-demo.as_adventure_small_training.factcurrencyrate`  curFrom
@@ -59,7 +57,7 @@ sql: |2-
           salesterritorykey,currencykey_from,
           currencykey_to,
           CurrencyRates.datekey,
-          avaragerate,
+          averagerate,
           budgetedrate
           FROM
           CurrencyRates

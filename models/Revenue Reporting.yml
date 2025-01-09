@@ -5,6 +5,7 @@ dimensions: []
 metrics:
 
   - unique_name: Actual Rate
+  - unique_name: Budgeted Rate
   - unique_name: Order Quantity_sum
 
 
