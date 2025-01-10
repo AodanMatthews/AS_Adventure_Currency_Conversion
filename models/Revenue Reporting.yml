@@ -4,12 +4,10 @@ label: Revenue Reporting
 dimensions: []
 metrics:
   - unique_name: Order Quantity_sum
-
   - unique_name: Actual Rate
     folder: FX Rates
   - unique_name: Budgeted Rate
     folder: FX Rates
-
   - unique_name: Actual Unit Price
     folder: Actual Reporting Amounts
   - unique_name: Actual Unit Price Discount
@@ -26,7 +24,6 @@ metrics:
     folder: Actual Reporting Amounts
   - unique_name: Actual Total Product Cost
     folder: Actual Reporting Amounts
-    
   - unique_name: Budgeted Unit Price
     folder: Budgeted Reporting Amounts
   - unique_name: Budgeted Unit Price Discount
@@ -43,7 +40,6 @@ metrics:
     folder: Budgeted Reporting Amounts
   - unique_name: Budgeted Total Product Cost
     folder: Budgeted Reporting Amounts
-
   - unique_name: Unit Price
     folder: Base Currency Amounts
   - unique_name: Unit Price Discount
@@ -60,7 +56,6 @@ metrics:
     folder: Base Currency Amounts
   - unique_name: Total Product Cost_sum
     folder: Base Currency Amounts
-
   - unique_name: Sales Amount YTD
     folder: KPIs
   - unique_name: Sales Amount YoY
@@ -73,6 +68,8 @@ metrics:
     folder: KPIs
   - unique_name: Sales Amount PM
     folder: KPIs
+  - unique_name: SY Actual Rate
+  - unique_name: CY Actual Rate
 
 relationships:
   - unique_name: factinternetsales_productkey_to_Product Dimension_Product Code

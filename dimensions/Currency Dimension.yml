@@ -6,6 +6,13 @@ calculation_groups:
     label: Actuals Vs Budgeted Rates
     description: Actuals Vs Budgeted rate currency Conversions applied to other measures
     calculated_members:
+      - unique_name: CY Actual Rates
+        name: CY Actual Rates
+        description: Actual reporting currency rate conversions for base measures
+        expression: >- 
+          [Measures].currentMember  * [Measures].[CY Actual Rate]
+        format: '#,###.00;(#,###.00)'
+
       - unique_name: Actual Rates
         name: Actual Rates
         description: Actual reporting currency rate conversions for base measures
@@ -13,11 +20,63 @@ calculation_groups:
           [Measures].currentMember  * [Measures].[Actual Rate]
         format: '#,###.00;(#,###.00)'
 
-      - unique_name: Budgeted Rates
-        name: Budgeted Rates
+      - unique_name: CY Budgeted Rates
+        name: CY Budgeted Rates
         description: Budgeted reporting currency rate conversions for base measures
         expression: >-
           [Measures].currentMember * [Measures].[Budgeted Rate]
+        format: '#,###.00;(#,###.00)'  
+    folder: Currency Conversion
+
+  - unique_name: CY Actual Rates
+    label: CY Actual Rates
+    description: Actuals Vs Budgeted rate currency Conversions applied to other measures
+    calculated_members:
+      - unique_name: CYTD Actual Rates
+        name: CY Actual Rates
+        description: Actual reporting currency rate conversions for base measures
+        expression: >- 
+          Sum(PeriodsToDate([Date Dimension].[Date Month Hierarchy].[YearMonth], [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember) * [Measures].[Actual Rate]
+        format: '#,###.00;(#,###.00)'
+
+      - unique_name: PY Actual Rates
+        name: Actual Rates
+        description: Actual reporting currency rate conversions for base measures
+        expression: >- 
+          (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember) * [Measures].[Actual Rate]
+        format: '#,###.00;(#,###.00)'
+
+      - unique_name: YoY Actual Rates
+        name: CY Budgeted Rates
+        description: Budgeted reporting currency rate conversions for base measures
+        expression: >-
+          (([Date Dimension].[Date Month Hierarchy].CurrentMember, [Measures].[Sales Amount_sum]) - (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember ))  * [Measures].[Actual Rate]
+        format: '#,###.00;(#,###.00)'  
+    folder: CY Actuals
+
+  - unique_name: Actual Rates
+    label: Actual Rates
+    description: Actuals Vs Budgeted rate currency Conversions applied to other measures
+    calculated_members:
+      - unique_name: CYTD Actual Rates
+        name: CY Actual Rates
+        description: Actual reporting currency rate conversions for base measures
+        expression: >- 
+          Sum(PeriodsToDate([Date Dimension].[Date Month Hierarchy].[YearMonth], [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember) * [Measures].[Actual Rate]
+        format: '#,###.00;(#,###.00)'
+
+      - unique_name: PY Actual Rates
+        name: Actual Rates
+        description: Actual reporting currency rate conversions for base measures
+        expression: >- 
+          (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember) * [Measures].[Actual Rate]
+        format: '#,###.00;(#,###.00)'
+
+      - unique_name: YoY Actual Rates
+        name: CY Budgeted Rates
+        description: Budgeted reporting currency rate conversions for base measures
+        expression: >-
+          (([Date Dimension].[Date Month Hierarchy].CurrentMember, [Measures].[Sales Amount_sum]) - (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember ))  * [Measures].[Actual Rate]
         format: '#,###.00;(#,###.00)'  
     folder: Currency Conversion
 
