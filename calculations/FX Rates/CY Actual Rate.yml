@@ -1,8 +1,0 @@
-unique_name: CY Actual Rate
-object_type: metric_calc
-label: CY Actual Rate
-expression: >-
-  IIF ( IsEmpty ( [Measures].[SY Actual Rate] ) , [Measures].[Actual Rate] ,
-  ( [Measures].[SY Actual Rate] ) )
-format: '#,###.000;(#,###.000)'  
-is_hidden: false

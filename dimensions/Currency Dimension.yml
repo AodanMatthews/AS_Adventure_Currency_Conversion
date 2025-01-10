@@ -2,55 +2,56 @@ unique_name: Currency Dimension
 object_type: dimension
 label: Currency Dimension
 calculation_groups:
-  - unique_name: Actuals Vs Budgeted Rates
-    label: Actuals Vs Budgeted Rates
-    description: Actuals Vs Budgeted rate currency Conversions applied to other measures
+
+  - unique_name: Original Currency Rates
+    label: Original Currency Rates
+    description: Time Intelligence KPIs in original currency rates
     calculated_members:
-      - unique_name: CY Actual Rates
-        name: CY Actual Rates
-        description: Actual reporting currency rate conversions for base measures
+      - unique_name: CYTD
+        name: CYTD Base Metrics
+        description: CYTD metrics in original currency rates
         expression: >- 
-          [Measures].currentMember  * [Measures].[CY Actual Rate]
+          Sum(PeriodsToDate([Date Dimension].[Date Month Hierarchy].[YearMonth], [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember)
         format: '#,###.00;(#,###.00)'
 
-      - unique_name: Actual Rates
-        name: Actual Rates
-        description: Actual reporting currency rate conversions for base measures
+      - unique_name: PY
+        name: PY Base Metrics
+        description: PY metrics in original currency rates
         expression: >- 
-          [Measures].currentMember  * [Measures].[Actual Rate]
+          (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember)
         format: '#,###.00;(#,###.00)'
 
-      - unique_name: CY Budgeted Rates
-        name: CY Budgeted Rates
-        description: Budgeted reporting currency rate conversions for base measures
+      - unique_name: YoY
+        name: YoY Base Metrics
+        description: YoY metrics in original currency rates
         expression: >-
-          [Measures].currentMember * [Measures].[Budgeted Rate]
+          (([Date Dimension].[Date Month Hierarchy].CurrentMember, [Measures].currentMember) - (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember )) 
         format: '#,###.00;(#,###.00)'  
-    folder: Currency Conversion
+    folder: Original Currency Rates
 
   - unique_name: CY Actual Rates
     label: CY Actual Rates
-    description: Actuals Vs Budgeted rate currency Conversions applied to other measures
+    description: Time Intelligence KPIs in converted currency using CY actual rates
     calculated_members:
-      - unique_name: CYTD Actual Rates
-        name: CY Actual Rates
-        description: Actual reporting currency rate conversions for base measures
+      - unique_name: CYTD
+        name: CYTD Metrics in CY Actual Rates
+        description: CYTD metrics in converted currency using CY actual rates
         expression: >- 
           Sum(PeriodsToDate([Date Dimension].[Date Month Hierarchy].[YearMonth], [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember) * [Measures].[Actual Rate]
         format: '#,###.00;(#,###.00)'
 
-      - unique_name: PY Actual Rates
-        name: Actual Rates
-        description: Actual reporting currency rate conversions for base measures
+      - unique_name: PY
+        name: PY Metrics in CY Actual Rates
+        description: PY metrics in converted currency using CY actual rates
         expression: >- 
           (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember) * [Measures].[Actual Rate]
         format: '#,###.00;(#,###.00)'
 
-      - unique_name: YoY Actual Rates
-        name: CY Budgeted Rates
-        description: Budgeted reporting currency rate conversions for base measures
+      - unique_name: YoY
+        name: YoY Metrics in CY Actual Rates
+        description: YoY Metrics in converted currency using CY actual rates
         expression: >-
-          (([Date Dimension].[Date Month Hierarchy].CurrentMember, [Measures].[Sales Amount_sum]) - (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember ))  * [Measures].[Actual Rate]
+          (([Date Dimension].[Date Month Hierarchy].CurrentMember, [Measures].currentMember) - (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember ))  * [Measures].[Actual Rate]
         format: '#,###.00;(#,###.00)'  
     folder: CY Actuals
 
@@ -58,27 +59,28 @@ calculation_groups:
     label: Actual Rates
     description: Actuals Vs Budgeted rate currency Conversions applied to other measures
     calculated_members:
-      - unique_name: CYTD Actual Rates
-        name: CY Actual Rates
-        description: Actual reporting currency rate conversions for base measures
+      - unique_name: CYTD
+        name: CYTD Metrics in Actual Rates
+        description: CYTD metrics in converted currency using actual rates
         expression: >- 
           Sum(PeriodsToDate([Date Dimension].[Date Month Hierarchy].[YearMonth], [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember) * [Measures].[Actual Rate]
         format: '#,###.00;(#,###.00)'
 
-      - unique_name: PY Actual Rates
-        name: Actual Rates
-        description: Actual reporting currency rate conversions for base measures
+      - unique_name: PY
+        name: PY Metrics in Actual Rates
+        description: PY metrics in converted currency using actual rates
         expression: >- 
           (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember) * [Measures].[Actual Rate]
         format: '#,###.00;(#,###.00)'
 
-      - unique_name: YoY Actual Rates
-        name: CY Budgeted Rates
-        description: Budgeted reporting currency rate conversions for base measures
+      - unique_name: YoY
+        name: YoY Metrics in Actual Rates
+        description: YoY Metrics in converted currency using actual rates
         expression: >-
-          (([Date Dimension].[Date Month Hierarchy].CurrentMember, [Measures].[Sales Amount_sum]) - (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember ))  * [Measures].[Actual Rate]
+          (([Date Dimension].[Date Month Hierarchy].CurrentMember, [Measures].currentMember) - (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember )) * 
+          (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Actual Rate])
         format: '#,###.00;(#,###.00)'  
-    folder: Currency Conversion
+    folder: Actuals
 
 hierarchies:
   - unique_name: Base Currency Hierarchy
