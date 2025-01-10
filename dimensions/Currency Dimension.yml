@@ -83,7 +83,7 @@ calculation_groups:
     folder: Actual Rates
 
   - unique_name: CY Budgeted Rates
-    label: Budgeted Rates
+    label: CY Budgeted Rates
     description: Time Intelligence KPIs in converted currency using budgeted rates
     calculated_members:
       - unique_name: CYTD
