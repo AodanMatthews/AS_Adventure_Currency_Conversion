@@ -72,9 +72,8 @@ metrics:
     folder: KPIs
   - unique_name: Sales Amount PM
     folder: KPIs
-
-
-
+  - unique_name: Sales Amount PYTD
+    folder: KPIs
 relationships:
   - unique_name: factinternetsales_productkey_to_Product Dimension_Product Code
     from:

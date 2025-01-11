@@ -2,6 +2,7 @@ unique_name: Sales Amount YTD
 object_type: metric_calc
 label: Sales Amount YTD
 expression: |-
-  Sum(PeriodsToDate([Date Dimension].[Date Month Hierarchy].[YearMonth], [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Sales Amount_sum])
+  IIF ( IsEmpty ( [Measures].[Sales Amount_sum] ) , NULL , Sum(PeriodsToDate([Date Dimension].[Date Month Hierarchy].[YearMonth], [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Sales Amount_sum]) )
+  
 format: '#,###.00;(#,###.00)'
 is_hidden: false
