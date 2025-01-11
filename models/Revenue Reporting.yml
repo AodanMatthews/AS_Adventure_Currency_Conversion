@@ -70,6 +70,7 @@ metrics:
     folder: KPIs
   - unique_name: SY Actual Rate
   - unique_name: PY Actual Rate
+
 relationships:
   - unique_name: factinternetsales_productkey_to_Product Dimension_Product Code
     from:
