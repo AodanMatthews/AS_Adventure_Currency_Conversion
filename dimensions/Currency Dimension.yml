@@ -117,7 +117,7 @@ calculation_groups:
 
   - unique_name: CY Budgeted Rates
     label: CY Budgeted Rates
-    description: Time Intelligence KPIs in converted currency using budgeted rates
+    description: Time Intelligence KPIs in converted currency using CY budgeted rates
     calculated_members:
       - unique_name: 1- CYTD Metrics in CY Budgeted Rates
         name: CYTD Metrics in CY Budgeted Rates
