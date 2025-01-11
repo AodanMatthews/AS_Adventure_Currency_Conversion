@@ -3,8 +3,8 @@ object_type: dimension
 label: Currency Dimension
 calculation_groups:
 
-  - unique_name: Original Currency Rates
-    label: Original Currency Rates
+  - unique_name: Original Currency Rates KPIs
+    label: Original Currency Rates KPIs
     description: Time Intelligence KPIs in original currency rates
     calculated_members:
       - unique_name: 1- CYTD Metrics in Original Currency
@@ -29,8 +29,8 @@ calculation_groups:
         format: '#,###.00;(#,###.00)'  
     folder: Original Currency Rates
 
-  - unique_name: CY Actual Rates
-    label: CY Actual Rates
+  - unique_name: CY Actual Rates KPIs
+    label: CY Actual Rates KPIs
     description: Time Intelligence KPIs in converted currency using CY actual rates
     calculated_members:
       - unique_name: 1- CYTD Metrics in CY Actual Rates 
@@ -55,8 +55,8 @@ calculation_groups:
         format: '#,###.00;(#,###.00)'  
     folder: Actual Rates
 
-  - unique_name: Actual Rates
-    label: Actual Rates
+  - unique_name: Actual Rates KPIs
+    label: Actual Rates KPIs
     description: Time Intelligence KPIs in converted currency using actual rates
     calculated_members:
       - unique_name: 1- CYTD Metrics in Respective Actual Rates
@@ -84,8 +84,8 @@ calculation_groups:
         format: '#,###.00;(#,###.00)'  
     folder: Actual Rates
 
-  - unique_name: PY Actual Rates
-    label: PY Actual Rates
+  - unique_name: PY Actual Rates KPIs
+    label: PY Actual Rates KPIs
     description: Time Intelligence KPIs in converted currency using PY actual rates
     calculated_members:
       - unique_name: 1- CYTD Metrics in PY Actual Rates
@@ -115,8 +115,8 @@ calculation_groups:
         format: '#,###.00;(#,###.00)'  
     folder: Actual Rates
 
-  - unique_name: CY Budgeted Rates
-    label: CY Budgeted Rates
+  - unique_name: CY Budgeted Rates KPIs
+    label: CY Budgeted Rates KPIs
     description: Time Intelligence KPIs in converted currency using CY budgeted rates
     calculated_members:
       - unique_name: 1- CYTD Metrics in CY Budgeted Rates
@@ -141,8 +141,8 @@ calculation_groups:
         format: '#,###.00;(#,###.00)' 
     folder: Budgeted Rates
 
-  - unique_name: Budgeted Rates
-    label: Budgeted Rates
+  - unique_name: Budgeted Rates KPIs
+    label: Budgeted Rates KPIs
     description: Time Intelligence KPIs in converted currency using budgeted rates
     calculated_members:
       - unique_name: 1- CYTD Metrics in Respective Budgeted Rates
@@ -170,8 +170,8 @@ calculation_groups:
         format: '#,###.00;(#,###.00)'  
     folder: Budgeted Rates
 
-  - unique_name: PY Budgeted Rates
-    label: PY Budgeted Rates
+  - unique_name: PY Budgeted Rates KPIs
+    label: PY Budgeted Rates KPIs
     description: Time Intelligence KPIs in converted currency using PY budgeted rates
     calculated_members:
       - unique_name: 1- CYTD Metrics in PY Budgeted Rates
