@@ -1,0 +1,5 @@
+unique_name: CY Name
+object_type: metric_calc
+label: CY Name
+expression: '[Date Dimension].[Date Month Hierarchy].CurrentMember.Name'
+is_hidden: false

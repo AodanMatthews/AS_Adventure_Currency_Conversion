@@ -10,6 +10,14 @@ metrics:
     folder: FX Rates
   - unique_name: Budgeted Rate
     folder: FX Rates
+  - unique_name: Yearly Budgeted Rate
+    folder: FX Rates
+  - unique_name: Yearly Actual Rate
+    folder: FX Rates
+  - unique_name: Monthly Budgeted Rate
+    folder: FX Rates
+  - unique_name: Monthly Actual Rate
+    folder: FX Rates
   - unique_name: PY Budgeted Rate
     folder: FX Rates
   - unique_name: Actual Unit Price
@@ -74,6 +82,7 @@ metrics:
     folder: KPIs
   - unique_name: Sales Amount PYTD
     folder: KPIs
+  - unique_name: CY Name
 relationships:
   - unique_name: factinternetsales_productkey_to_Product Dimension_Product Code
     from:

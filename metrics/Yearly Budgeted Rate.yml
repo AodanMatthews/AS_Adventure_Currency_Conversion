@@ -1,0 +1,7 @@
+unique_name: Yearly Budgeted Rate
+object_type: metric
+label: Yearly Budgeted Rate
+calculation_method: average
+column: yearly_budgetedrate
+dataset: factcurrencyrate_conversion
+format: '#,###.000;(#,###.000)'

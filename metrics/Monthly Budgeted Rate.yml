@@ -1,0 +1,7 @@
+unique_name: Monthly Budgeted Rate
+object_type: metric
+label: Monthly Budgeted Rate
+calculation_method: average
+column: monthly_budgetedrate
+dataset: factcurrencyrate_conversion
+format: '#,###.000;(#,###.000)'

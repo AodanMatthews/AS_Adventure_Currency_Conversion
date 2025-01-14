@@ -3,74 +3,60 @@ object_type: dimension
 label: Currency Dimension
 calculation_groups:
 
-  - unique_name: Actual vs Budgeted CY
-    label: Actual vs Budgeted Rate CY
+  - unique_name: Actual vs Budgeted (Yearly)
+    label: Actual vs Budgeted (Yearly)
     description: Standard metric currency conversions for the current year using actual and budgeted rates for CY and PY
     calculated_members:
-      - unique_name: 1- CY Metrics in CY Actual Rates 
+      - unique_name: CY Metrics in CY Actual Rates 
         name: CY Metrics in CY Actual Rates 
         description: Metrics converted using CY actual currency rates
         expression: >- 
-          [Measures].currentMember * [Measures].[Actual Rate]
+         [Measures].[CY Name] & [Measures].currentMember * [Measures].[Yearly Actual Rate] 
         format: '#,###.00;(#,###.00)'
 
-      - unique_name: 1- CY Metrics in PY Actual Rates 
+      - unique_name: CY Metrics in PY Actual Rates 
         name: CY Metrics in PY Actual Rates
         description: Metrics converted using PY actual currency rates
         expression: >- 
           [Measures].currentMember *
-          (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Actual Rate]) 
+          (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Yearly Actual Rate]) 
         format: '#,###.00;(#,###.00)'
 
-      - unique_name: 2- CY Metrics in CY Budgeted Rates 
+      - unique_name: CY Metrics in CY Budgeted Rates 
         name: CY Metrics in CY Budgeted Rates
         description: Metrics converted using CY budgeted currency rates
         expression: >- 
-          [Measures].currentMember * [Measures].[Budgeted Rate]
+          [Measures].currentMember * [Measures].[Yearly Budgeted Rate]
         format: '#,###.00;(#,###.00)'
 
-      - unique_name: 2- CY Metrics in PY Budgeted Rates 
-        name: CY Metrics in PY Budgeted Rates 
-        description: Metrics converted using PY budgeted currency rates
-        expression: >- 
-          [Measures].currentMember *
-          (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Budgeted Rate])
-        format: '#,###.00;(#,###.00)' 
     folder:  Actual vs Budgeted Rates
 
-  - unique_name: Actual vs Budgeted PY
-    label: Actual vs Budgeted Rate PY
+  - unique_name: Actual vs Budgeted (Monthly)
+    label: Actual vs Budgeted (Monthly)
     description: Standard metric currency conversions for the prior year using actual and budgeted rates for CY and PY
     calculated_members:
       - unique_name: PY Metrics in CY Actual Rates 
         name: PY Metrics in CY Actual Rates 
         description: Metrics converted using CY actual currency rates
         expression: >- 
-          (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember) * [Measures].[Actual Rate]
+          [Measures].currentMember * [Measures].[Monthly Actual Rate]
         format: '#,###.00;(#,###.00)'
 
       - unique_name: PY Metrics in PY Actual Rates 
         name: PY Metrics in PY Actual Rates
         description: Metrics converted using PY actual currency rates
         expression: >- 
-          (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember) *
-          (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Actual Rate])
+          [Measures].currentMember *
+          (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Monthly Actual Rate]) 
         format: '#,###.00;(#,###.00)'
 
       - unique_name: PY Metrics in CY Budgeted Rates 
         name: PY Metrics in CY Budgeted Rates
         description: Metrics converted using CY budgeted currency rates
         expression: >- 
-          (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember) * [Measures].[Budgeted Rate]
+          [Measures].currentMember * [Measures].[Monthly Budgeted Rate]
         format: '#,###.00;(#,###.00)'
 
-      - unique_name: PY Metrics in PY Budgeted Rates 
-        name: PY Metrics in PY Budgeted Rates 
-        description: Metrics converted using PY budgeted currency rates
-        expression: >- 
-          (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember) *
-          (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Budgeted Rate])
-        format: '#,###.00;(#,###.00)' 
     folder:  Actual vs Budgeted Rates
 
   - unique_name: Original Currency Rates KPIs

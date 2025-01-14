@@ -16,6 +16,14 @@ columns:
     data_type: long
   - name: budgetedrate
     data_type: double
+  - name: monthly_averagerate
+    data_type: double
+  - name: yearly_averagerate
+    data_type: double
+  - name: monthly_budgetedrate
+    data_type: double
+  - name: yearly_budgetedrate
+    data_type: double
 connection_id: As_Adventure
 sql: |2-
         WITH CurrencyRates AS
@@ -25,7 +33,11 @@ sql: |2-
           curTo.currencykey as currencykey_to,
           curFrom.datekey as datekey,
           curFrom.averagerate / curTo.averagerate as averagerate,
-          (curFrom.averagerate / curTo.averagerate)*1.05 as budgetedrate
+          AVG(curFrom.averagerate / curTo.averagerate) OVER( PARTITION BY curTo.currencykey, curFrom.currencykey, LEFT(CAST(curFrom.datekey AS STRING),6) )  as monthly_averagerate,
+          AVG(curFrom.averagerate / curTo.averagerate) OVER( PARTITION BY curTo.currencykey, curFrom.currencykey, LEFT(CAST(curFrom.datekey AS STRING),4) )  as yearly_averagerate,
+          (curFrom.averagerate / curTo.averagerate)*1.05 as budgetedrate,
+          AVG(curFrom.averagerate / curTo.averagerate) OVER( PARTITION BY curTo.currencykey, curFrom.currencykey, LEFT(CAST(curFrom.datekey AS STRING),6) )*1.05 as monthly_budgetedrate,
+          AVG(curFrom.averagerate / curTo.averagerate) OVER( PARTITION BY curTo.currencykey, curFrom.currencykey, LEFT(CAST(curFrom.datekey AS STRING),4) )*1.05 as yearly_budgetedrate,
 
           FROM
           `atscale-sales-demo.as_adventure_small_training.factcurrencyrate`  curFrom
@@ -58,7 +70,11 @@ sql: |2-
           currencykey_to,
           CurrencyRates.datekey,
           averagerate,
-          budgetedrate
+          monthly_averagerate,
+          yearly_averagerate,
+          budgetedrate,
+          monthly_budgetedrate,
+          yearly_budgetedrate
           FROM
           CurrencyRates
           JOIN Sales 
