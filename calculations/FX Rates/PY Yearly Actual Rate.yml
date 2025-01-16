@@ -2,7 +2,6 @@ unique_name: PY Yearly Actual Rate
 object_type: metric_calc
 label: PY Yearly Actual Rate
 expression: >-
-  (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date
-  Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Yearly Actual Rate])
+  (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Yearly Actual Rate])
 format: '#,###.000;(#,###.000)'  
 is_hidden: false
