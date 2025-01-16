@@ -69,13 +69,13 @@ metrics:
   - unique_name: Total Product Cost_sum
     folder: Base Currency Amounts
   - unique_name: Sales Amount YTD
-    folder: KPIs
+    folder: Sales KPIs
   - unique_name: Sales Amount PY YTD
-    folder: KPIs
+    folder: Sales KPIs
   - unique_name: Sales Amount MTD
-    folder: KPIs
+    folder: Sales KPIs
   - unique_name: Sales Amount PY MTD
-    folder: KPIs
+    folder: Sales KPIs
 
 relationships:
   - unique_name: factinternetsales_productkey_to_Product Dimension_Product Code
