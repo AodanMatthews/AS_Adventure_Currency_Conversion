@@ -70,19 +70,14 @@ metrics:
     folder: Base Currency Amounts
   - unique_name: Sales Amount YTD
     folder: KPIs
-  - unique_name: Sales Amount YoY
-    folder: KPIs
-  - unique_name: Sales Amount PY
+  - unique_name: Sales Amount PY YTD
     folder: KPIs
   - unique_name: Sales Amount MTD
     folder: KPIs
-  - unique_name: Sales Amount MoM
-    folder: KPIs
-  - unique_name: Sales Amount PM
-    folder: KPIs
-  - unique_name: Sales Amount PYTD
+  - unique_name: Sales Amount PY MTD
     folder: KPIs
   - unique_name: CY Name
+  - unique_name: PY Name
 relationships:
   - unique_name: factinternetsales_productkey_to_Product Dimension_Product Code
     from:

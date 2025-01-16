@@ -1,0 +1,5 @@
+unique_name: PY Name
+object_type: metric_calc
+label: PY Name
+expression: (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[CY Name]) 
+is_hidden: false
