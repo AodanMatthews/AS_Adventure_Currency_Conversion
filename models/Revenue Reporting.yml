@@ -76,7 +76,6 @@ metrics:
     folder: Sales KPIs
   - unique_name: Sales Amount PY MTD
     folder: Sales KPIs
-
 relationships:
   - unique_name: factinternetsales_productkey_to_Product Dimension_Product Code
     from:

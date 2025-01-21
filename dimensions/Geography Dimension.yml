@@ -61,4 +61,14 @@ relationships:
     to:
       level: Region
     type: snowflake
+  - unique_name: dimsalesterritory_salesterritorycountry_to_Geography Security
+    from:
+      dataset: dimsalesterritory
+      hierarchy: Geography Hierarchy
+      join_columns:
+        - salesterritorycountry
+      level: Region
+    to:
+      row_security: Geography Security
+    type: embedded
 type: standard
