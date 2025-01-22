@@ -1,9 +1,9 @@
-unique_name: PY Monthly Actual Rate
+unique_name: PY Yearly Budgeted Rate
 object_type: metric_calc
-label: PY Monthly Actual Rate
+label: PY Yearly Budgeted Rate
 expression: >-
   (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date
-  Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Monthly Actual
+  Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Yearly Budgeted
   Rate])
 format: '#,###.000;(#,###.000)'
 is_hidden: false
