@@ -12,9 +12,7 @@ calculation_groups:
         name: ACT PYRates (Y) 
         description: Metrics converted using PY actual yearly avg currency rates
         expression: >- 
-          [Measures].currentMember *
-          (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, 
-          [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Yearly Actual Rate]) 
+          [Measures].currentMember * [Measures].[PY Yearly Actual Rate] 
         format: '#,###.00;(#,###.00)'
 
       - unique_name: 2- ACT CYRates (Y) 
@@ -41,9 +39,7 @@ calculation_groups:
         name: 1- ACT PYRates (M)
         description: Metrics converted using PY actual montlhy avg currency rates
         expression: >- 
-          [Measures].currentMember *
-          (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, 
-          [Date Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Monthly Actual Rate]) 
+          [Measures].currentMember * [Measures].[PY Monthly Actual Rate] 
         format: '#,###.00;(#,###.00)'
 
       - unique_name: 2- ACT CYRates (M)

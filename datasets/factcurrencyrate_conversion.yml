@@ -38,7 +38,7 @@ sql: >
 
 
   /*the averagerate field will form the basis for the actual rate, this is then
-  averages and partitioned over the month and year in the datekey to create
+  averaged and partitioned over the month and year in the datekey to create
   monthly and yearly actual rates*/
 
 
