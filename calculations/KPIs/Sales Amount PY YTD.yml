@@ -1,6 +1,6 @@
-unique_name: Sales Amount PYTD
+unique_name: Sales Amount PY YTD
 object_type: metric_calc
-label: Sales Amount PYTD
+label: Sales Amount PY YTD
 expression: >-
   IIF ( IsEmpty ( [Measures].[Sales Amount_sum] ) , NULL , Sum(PeriodsToDate([Date Dimension].[Date Month Hierarchy].[YearMonth], ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date Dimension].[Date Month Hierarchy].CurrentMember)), [Measures].[Sales Amount_sum]) )
 format: '#,###.00;(#,###.00)'
