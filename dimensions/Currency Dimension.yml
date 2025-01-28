@@ -16,6 +16,14 @@ calculation_groups:
           ([Currency Dimension].[Rate Type Hierarchy].[Rate Type].&[averagerate], 
           [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember, [Measures].[FX Rate])
         format: '#,###.00;(#,###.00)'
+      - unique_name: PY Actual Rates
+        name: Metrics in Actual Rates
+        description: Metrics converted using CY actual currency rates
+        expression: >-
+          [Measures].currentMember *  
+          ([Currency Dimension].[Rate Type Hierarchy].[Rate Type].&[averagerate], 
+          [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember, [Measures].[PY FX Rate])
+        format: '#,###.00;(#,###.00)'
       - unique_name: Budgeted Rates
         name: Metrics in Budgeted Rates
         description: Metrics converted using CY budgeted currency rates
@@ -23,6 +31,14 @@ calculation_groups:
           [Measures].currentMember *  
           ([Currency Dimension].[Rate Type Hierarchy].[Rate Type].&[budgetedrate], 
           [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember, [Measures].[FX Rate])
+        format: '#,###.00;(#,###.00)'
+      - unique_name: PY Budgeted Rates
+        name: Metrics in Budgeted Rates
+        description: Metrics converted using CY budgeted currency rates
+        expression: >-
+          [Measures].currentMember *  
+          ([Currency Dimension].[Rate Type Hierarchy].[Rate Type].&[budgetedrate], 
+          [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember, [Measures].[PY FX Rate])
         format: '#,###.00;(#,###.00)'
     folder: Actual vs Budgeted Rates
 hierarchies:
