@@ -6,4 +6,4 @@ expression: >-
   Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Budgeted FX
   Rate])
 format: '#,###.000;(#,###.000)'
-is_hidden: true
+is_hidden: false
