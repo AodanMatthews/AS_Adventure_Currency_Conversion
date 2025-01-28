@@ -4,13 +4,9 @@ label: Revenue Reporting
 dimensions: []
 metrics:
   - unique_name: Order Quantity_sum
-  - unique_name: Actual Rate
+  - unique_name: FX Rate
     folder: FX Rates
-  - unique_name: PY Actual Rate
-    folder: FX Rates
-  - unique_name: Budgeted Rate
-    folder: FX Rates
-  - unique_name: PY Budgeted Rate
+  - unique_name: PY FX Rate
     folder: FX Rates
   - unique_name: Reporting Unit Price
     folder: Reporting Currency Amounts
