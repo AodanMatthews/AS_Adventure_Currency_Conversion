@@ -1,6 +1,6 @@
-unique_name: Actual Discount Amount
+unique_name: Reporting Discount Amount
 object_type: metric_calc
-label: Actual Discount Amount
+label: Reporting Discount Amount
 expression: '[Measures].[Discount Amount_sum]*[Measures].[Actual Rate]'
 format: '#,###.00;(#,###.00)'
 is_hidden: false

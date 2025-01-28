@@ -1,6 +1,6 @@
-unique_name: Actual Unit Price
+unique_name: Reporting Unit Price
 object_type: metric_calc
-label: Actual Unit Price
+label: Reporting Unit Price
 expression: '[Measures].[Unit Price]*[Measures].[Actual Rate]'
 format: '#,###.00;(#,###.00)'
 is_hidden: false

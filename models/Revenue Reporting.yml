@@ -12,38 +12,22 @@ metrics:
     folder: FX Rates
   - unique_name: PY Budgeted Rate
     folder: FX Rates
-  - unique_name: Actual Unit Price
-    folder: Actual Reporting Amounts
-  - unique_name: Actual Unit Price Discount
-    folder: Actual Reporting Amounts
-  - unique_name: Actual Sales Amount
-    folder: Actual Reporting Amounts
-  - unique_name: Actual Tax Amount
-    folder: Actual Reporting Amounts
-  - unique_name: Actual Discount Amount
-    folder: Actual Reporting Amounts
-  - unique_name: Actual Extended Amount
-    folder: Actual Reporting Amounts
-  - unique_name: Actual Product Standard Cost
-    folder: Actual Reporting Amounts
-  - unique_name: Actual Total Product Cost
-    folder: Actual Reporting Amounts
-  - unique_name: Budgeted Unit Price
-    folder: Budgeted Reporting Amounts
-  - unique_name: Budgeted Unit Price Discount
-    folder: Budgeted Reporting Amounts
-  - unique_name: Budgeted Sales Amount
-    folder: Budgeted Reporting Amounts
-  - unique_name: Budgeted Tax Amount
-    folder: Budgeted Reporting Amounts
-  - unique_name: Budgeted Discount Amount
-    folder: Budgeted Reporting Amounts
-  - unique_name: Budgeted Extended Amount
-    folder: Budgeted Reporting Amounts
-  - unique_name: Budgeted Product Standard Cost
-    folder: Budgeted Reporting Amounts
-  - unique_name: Budgeted Total Product Cost
-    folder: Budgeted Reporting Amounts
+  - unique_name: Reporting Unit Price
+    folder: Reporting Currency Amounts
+  - unique_name: Reporting Unit Price Discount
+    folder: Reporting Currency Amounts
+  - unique_name: Reporting Sales Amount
+    folder: Reporting Currency Amounts
+  - unique_name: Reporting Tax Amount
+    folder: Reporting Currency Amounts
+  - unique_name: Reporting Discount Amount
+    folder: Reporting Currency Amounts
+  - unique_name: Reporting Extended Amount
+    folder: Reporting Currency Amounts
+  - unique_name: Reporting Product Standard Cost
+    folder: Reporting Currency Amounts
+  - unique_name: Reporting Total Product Cost
+    folder: Reporting Currency Amounts
   - unique_name: Unit Price
     folder: Base Currency Amounts
   - unique_name: Unit Price Discount

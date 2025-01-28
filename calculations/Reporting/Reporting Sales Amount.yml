@@ -1,6 +1,6 @@
-unique_name: Actual Sales Amount
+unique_name: Reporting Sales Amount
 object_type: metric_calc
-label: Actual Sales Amount
+label: Reporting Sales Amount
 expression: '[Measures].[Sales Amount_sum]*[Measures].[Actual Rate]'
 format: '#,###.00;(#,###.00)'
 is_hidden: false
