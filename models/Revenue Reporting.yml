@@ -6,7 +6,13 @@ metrics:
   - unique_name: Order Quantity_sum
   - unique_name: FX Rate
     folder: FX Rates
-  - unique_name: PY FX Rate
+  - unique_name: Actual FX Rate
+    folder: FX Rates
+  - unique_name: PY Actual FX Rate
+    folder: FX Rates
+  - unique_name: Budgeted FX Rate
+    folder: FX Rates
+  - unique_name: PY Budgeted FX Rate
     folder: FX Rates
   - unique_name: Reporting Unit Price
     folder: Reporting Currency Amounts
@@ -54,6 +60,7 @@ metrics:
     folder: KPIs
   - unique_name: Sales Amount PYTD
     folder: KPIs
+
 relationships:
   - unique_name: factinternetsales_productkey_to_Product Dimension_Product Code
     from:

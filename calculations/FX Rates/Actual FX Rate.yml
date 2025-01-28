@@ -1,0 +1,14 @@
+unique_name: Actual FX Rate
+object_type: metric_calc
+label: Actual FX Rate
+expression: >-
+  CASE
+
+  WHEN [Currency Dimension].[Reporting Currency Hierarchy].[Rate
+  Type].CURRENTMEMBER.NAME = "averagerate"  THEN [Measures].[FX Rate] 
+
+  ELSE NULL
+
+  END
+format: '#,###.000;(#,###.000)'
+is_hidden: false
