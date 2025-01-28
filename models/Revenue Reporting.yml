@@ -8,6 +8,8 @@ metrics:
     folder: FX Rates
   - unique_name: Actual FX Rate
     folder: FX Rates
+  - unique_name: PY FX Rate
+    folder: FX Rates
   - unique_name: PY Actual FX Rate
     folder: FX Rates
   - unique_name: Budgeted FX Rate
@@ -60,7 +62,6 @@ metrics:
     folder: KPIs
   - unique_name: Sales Amount PYTD
     folder: KPIs
-
 relationships:
   - unique_name: factinternetsales_productkey_to_Product Dimension_Product Code
     from:
@@ -188,3 +189,21 @@ relationships:
     to:
       dimension: Currency Dimension
       level: Reporting Currency Join
+  - unique_name: >-
+      factcurrencyrate_conversion_currencykey_to_to_Currency Dimension_Currency
+      Join
+    from:
+      dataset: factcurrencyrate_conversion
+      join_columns:
+        - currencykey_to
+    to:
+      dimension: Currency Dimension
+      level: Currency Join
+  - unique_name: factinternetsales_currencykey_to_Currency Dimension_Sales Join
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - currencykey
+    to:
+      dimension: Currency Dimension
+      level: Sales Join

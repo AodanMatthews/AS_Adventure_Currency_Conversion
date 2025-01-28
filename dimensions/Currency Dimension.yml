@@ -11,34 +11,20 @@ calculation_groups:
       - unique_name: 1- Metrics in Actual Rates
         name: Metrics in Actual Rates
         description: Metrics converted using CY actual currency rates
-        expression: '[Measures].currentMember * [Measures].[FX Rate]'
+        expression: >-
+          [Measures].currentMember *  
+          ([Currency Dimension].[Rate Type Hierarchy].[Rate Type].&[averagerate], 
+          [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember, [Measures].[FX Rate])
         format: '#,###.00;(#,###.00)'
       - unique_name: 2- Metrics in Budgeted Rates
         name: Metrics in Budgeted Rates
         description: Metrics converted using CY budgeted currency rates
-        expression: '[Measures].currentMember * [Measures].[FX Rate]'
+        expression: >-
+          [Measures].currentMember *  
+          ([Currency Dimension].[Rate Type Hierarchy].[Rate Type].&[budgetedrate], 
+          [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember, [Measures].[FX Rate])
         format: '#,###.00;(#,###.00)'
     folder: Actual vs Budgeted Rates
-  - unique_name: Actual Rates
-    label: Actual Rates
-    description: Time Intelligence KPIs in converted currency using CY actual rates
-    calculated_members:
-      - unique_name: Metrics in Actual Rates
-        name: Metrics in Actual Rates
-        description: CYTD metrics in converted currency using CY actual rates
-        expression: '[Measures].currentMember * [Measures].[FX Rate]'
-        format: '#,###.00;(#,###.00)'
-    folder: Actual Rates
-  - unique_name: Budgeted Rates
-    label: Budgeted Rates
-    description: Time Intelligence KPIs in converted currency using CY budgeted rates
-    calculated_members:
-      - unique_name: Metrics in Budgeted Rates
-        name: Metrics in Budgeted Rates
-        description: CYTD metrics in converted currency using budgeted rates
-        expression: '[Measures].currentMember * [Measures].[FX Rate]'
-        format: '#,###.00;(#,###.00)'
-    folder: Budgeted Rates
 hierarchies:
   - unique_name: Base Currency Hierarchy
     label: Base Currency Hierarchy
@@ -50,9 +36,14 @@ hierarchies:
     filter_empty: 'yes'
     levels:
       - unique_name: Reporting Currency
-      - unique_name: Rate Type
       - unique_name: Reporting Currency Join
       - unique_name: Reporting Date
+  - unique_name: Rate Type Hierarchy
+    label: Rate Type Hierarchy
+    levels:
+      - unique_name: Rate Type
+      - unique_name: Sales Join
+      - unique_name: Currency Join
 level_attributes:
   - unique_name: Base Currency
     label: Base Currency
@@ -97,6 +88,24 @@ level_attributes:
       - ratetype
     name_column: ratetype
     sort_column: ratetype
+  - unique_name: Sales Join
+    label: Sales Join
+    contains_unique_names: false
+    dataset: factcurrencyrate_conversion
+    is_hidden: true
+    is_unique_key: false
+    key_columns:
+      - currencykey_from
+    name_column: currencykey_from
+  - unique_name: Currency Join
+    label: Currency Join
+    contains_unique_names: false
+    dataset: factcurrencyrate_conversion
+    is_hidden: true
+    is_unique_key: false
+    key_columns:
+      - currencykey_to
+    name_column: currencykey_to
 relationships:
   - from:
       dataset: factcurrencyrate_conversion

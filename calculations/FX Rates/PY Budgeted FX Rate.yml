@@ -3,6 +3,7 @@ object_type: metric_calc
 label: PY Budgeted FX Rate
 expression: >-
   (ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date
-  Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Budgeted FX Rate])
+  Dimension].[Date Month Hierarchy].CurrentMember), [Measures].[Budgeted FX
+  Rate])
 format: '#,###.000;(#,###.000)'
-is_hidden: false
+is_hidden: true

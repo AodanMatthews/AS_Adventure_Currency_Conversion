@@ -4,11 +4,11 @@ label: Budgeted FX Rate
 expression: >-
   CASE
 
-  WHEN [Currency Dimension].[Reporting Currency Hierarchy].[Rate
-  Type].CURRENTMEMBER.NAME = "budgetedrate"  THEN [Measures].[FX Rate] 
+  WHEN [Currency Dimension].[Reporting Currency Hierarchy].CURRENTMEMBER.NAME =
+  "budgetedrate"  THEN [Measures].[FX Rate] 
 
   ELSE NULL
 
   END
 format: '#,###.000;(#,###.000)'
-is_hidden: false
+is_hidden: true
