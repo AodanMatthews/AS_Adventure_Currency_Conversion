@@ -16,7 +16,7 @@ calculation_groups:
           ([Currency Dimension].[Rate Type Hierarchy].[Rate Type].&[averagerate], 
           [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember, [Measures].[FX Rate])
         format: '#,###.00;(#,###.00)'
-      - unique_name: PY Actual Rates
+      - unique_name: Actual Rates (PY)
         name: Metrics in Actual Rates
         description: Metrics converted using CY actual currency rates
         expression: >-
@@ -32,7 +32,7 @@ calculation_groups:
           ([Currency Dimension].[Rate Type Hierarchy].[Rate Type].&[budgetedrate], 
           [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember, [Measures].[FX Rate])
         format: '#,###.00;(#,###.00)'
-      - unique_name: PY Budgeted Rates
+      - unique_name: Budgeted Rates (PY)
         name: Metrics in Budgeted Rates
         description: Metrics converted using CY budgeted currency rates
         expression: >-
