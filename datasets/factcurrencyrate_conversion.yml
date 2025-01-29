@@ -25,7 +25,7 @@ sql: |-
   curFrom.currencykey as currencykey_from,
   curTo.currencykey as currencykey_to,
   curFrom.datekey as datekey,
-  curFrom.averagerate / curTo.averagerate as averagerate,
+  curFrom.averagerate / curTo.averagerate as actualrate,
   (curFrom.averagerate / curTo.averagerate)*1.05 as budgetedrate
 
   FROM
@@ -61,7 +61,7 @@ sql: |-
   currencykey_from,
   currencykey_to,
   CurrencyRates.datekey,
-  averagerate,
+  actualrate,
   budgetedrate
   FROM
   CurrencyRates
@@ -82,5 +82,5 @@ sql: |-
   RatesTable
   UNPIVOT 
   (
-  rates FOR ratetype IN (averagerate, budgetedrate)
+  rates FOR ratetype IN (actualrate, budgetedrate)
   )

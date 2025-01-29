@@ -186,11 +186,4 @@ relationships:
     to:
       dimension: Currency Dimension
       level: Currency Join
-  - unique_name: factinternetsales_currencykey_to_Currency Dimension_Sales Join
-    from:
-      dataset: factinternetsales
-      join_columns:
-        - currencykey
-    to:
-      dimension: Currency Dimension
-      level: Sales Join
+
