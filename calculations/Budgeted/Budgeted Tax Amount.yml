@@ -1,6 +1,0 @@
-unique_name: Budgeted Tax Amount
-object_type: metric_calc
-label: Budgeted Tax Amount
-expression: '[Measures].[Tax Amount_sum]*[Measures].[Budgeted Rate]'
-format: '#,###.00;(#,###.00)'
-is_hidden: false

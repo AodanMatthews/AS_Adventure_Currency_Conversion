@@ -1,6 +1,0 @@
-unique_name: Actual Unit Price Discount
-object_type: metric_calc
-label: Actual Unit Price Discount
-expression: '[Measures].[Unit Price Discount]*[Measures].[Actual Rate]'
-format: '#,###.00;(#,###.00)'
-is_hidden: false
