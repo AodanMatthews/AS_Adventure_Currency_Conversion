@@ -12,33 +12,37 @@ calculation_groups:
         name: Metrics in Actual Rates
         description: Metrics converted using CY actual currency rates
         expression: >-
-          [Measures].currentMember *  
-          ([Currency Dimension].[Rate Type Hierarchy].[Rate Type].&[averagerate], 
-          [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember, [Measures].[FX Rate])
+          [Measures].currentMember *   ([Currency Dimension].[Rate Type
+          Hierarchy].[Rate Type].&[averagerate],  [Currency
+          Dimension].[Reporting Currency Hierarchy].CurrentMember,
+          [Measures].[FX Rate])
         format: '#,###.00;(#,###.00)'
       - unique_name: Actual Rates (PY)
         name: Metrics in Actual Rates
         description: Metrics converted using CY actual currency rates
         expression: >-
-          [Measures].currentMember *  
-          ([Currency Dimension].[Rate Type Hierarchy].[Rate Type].&[averagerate], 
-          [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember, [Measures].[PY FX Rate])
+          [Measures].currentMember *   ([Currency Dimension].[Rate Type
+          Hierarchy].[Rate Type].&[averagerate],  [Currency
+          Dimension].[Reporting Currency Hierarchy].CurrentMember,
+          [Measures].[PY FX Rate])
         format: '#,###.00;(#,###.00)'
       - unique_name: Budgeted Rates
         name: Metrics in Budgeted Rates
         description: Metrics converted using CY budgeted currency rates
         expression: >-
-          [Measures].currentMember *  
-          ([Currency Dimension].[Rate Type Hierarchy].[Rate Type].&[budgetedrate], 
-          [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember, [Measures].[FX Rate])
+          [Measures].currentMember *   ([Currency Dimension].[Rate Type
+          Hierarchy].[Rate Type].&[budgetedrate],  [Currency
+          Dimension].[Reporting Currency Hierarchy].CurrentMember,
+          [Measures].[FX Rate])
         format: '#,###.00;(#,###.00)'
       - unique_name: Budgeted Rates (PY)
         name: Metrics in Budgeted Rates
         description: Metrics converted using CY budgeted currency rates
         expression: >-
-          [Measures].currentMember *  
-          ([Currency Dimension].[Rate Type Hierarchy].[Rate Type].&[budgetedrate], 
-          [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember, [Measures].[PY FX Rate])
+          [Measures].currentMember *   ([Currency Dimension].[Rate Type
+          Hierarchy].[Rate Type].&[budgetedrate],  [Currency
+          Dimension].[Reporting Currency Hierarchy].CurrentMember,
+          [Measures].[PY FX Rate])
         format: '#,###.00;(#,###.00)'
     folder: Actual vs Budgeted Rates
 hierarchies:
@@ -49,6 +53,9 @@ hierarchies:
       - unique_name: Base Currency
   - unique_name: Reporting Currency Hierarchy
     label: Reporting Currency Hierarchy
+    default_member: >-
+      [Currency Dimension].[Reporting Currency Hierarchy].[Reporting
+      Currency].[EUR]]
     filter_empty: 'yes'
     levels:
       - unique_name: Reporting Currency
@@ -56,6 +63,7 @@ hierarchies:
       - unique_name: Reporting Date
   - unique_name: Rate Type Hierarchy
     label: Rate Type Hierarchy
+    default_member: '[Currency Dimension].[Rate Type Hierarchy].[Rate Type].[averagerate]'
     levels:
       - unique_name: Rate Type
       - unique_name: Sales Join
