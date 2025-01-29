@@ -8,59 +8,79 @@ columns:
     data_type: long
   - name: currencykey_to
     data_type: long
-  - name: averagerate
-    data_type: double
   - name: productkey
     data_type: long
   - name: salesterritorykey
     data_type: long
-  - name: budgetedrate
+  - name: rates
     data_type: double
+  - name: ratetype
+    data_type: string
 connection_id: As_Adventure
-sql: |2-
-        WITH CurrencyRates AS
-          (
-          SELECT 
-          curFrom.currencykey as currencykey_from,
-          curTo.currencykey as currencykey_to,
-          curFrom.datekey as datekey,
-          curFrom.averagerate / curTo.averagerate as averagerate,
-          (curFrom.averagerate / curTo.averagerate)*1.05 as budgetedrate
+sql: |-
 
-          FROM
-          `atscale-sales-demo.as_adventure_small_training.factcurrencyrate`  curFrom
-          JOIN `atscale-sales-demo.as_adventure_small_training.factcurrencyrate`  curTo
-          ON curTo.datekey = curfrom.datekey
-          WHERE
-          curfrom.currencykey in (6, 19, 29, 39, 98, 100) and
-          curto.currencykey in (36, 98, 100)
-          ),
+  WITH CurrencyRates AS
+  (
+  SELECT 
+  curFrom.currencykey as currencykey_from,
+  curTo.currencykey as currencykey_to,
+  curFrom.datekey as datekey,
+  curFrom.averagerate / curTo.averagerate as actualrate,
+  (curFrom.averagerate / curTo.averagerate)*1.05 as budgetedrate
 
-          Sales AS
-          (
-          SELECT
-          productkey,
-          currencykey,
-          salesterritorykey,
-          orderdatekey
-          FROM
-          `atscale-sales-demo.as_adventure_small_training.factinternetsales`
-          GROUP BY
-          productkey,
-          currencykey,
-          salesterritorykey,
-          orderdatekey
-          )
+  FROM
+  `atscale-sales-demo.as_adventure_small_training.factcurrencyrate`  curFrom
+  JOIN `atscale-sales-demo.as_adventure_small_training.factcurrencyrate`  curTo
+  ON curTo.datekey = curfrom.datekey
+  WHERE
+  curfrom.currencykey in (6, 19, 29, 39, 98, 100) and
+  curto.currencykey in (36, 98, 100)
+  ),
 
-          SELECT
-          productkey,
-          salesterritorykey,currencykey_from,
-          currencykey_to,
-          CurrencyRates.datekey,
-          averagerate,
-          budgetedrate
-          FROM
-          CurrencyRates
-          JOIN Sales 
-          ON CurrencyRates.currencykey_from = Sales.currencykey
-          AND CurrencyRates.datekey = Sales.orderdatekey
+  JoiningKeys AS
+  (
+  SELECT
+  productkey,
+  currencykey,
+  salesterritorykey,
+  orderdatekey
+  FROM
+  `atscale-sales-demo.as_adventure_small_training.factinternetsales`
+  GROUP BY
+  productkey,
+  currencykey,
+  salesterritorykey,
+  orderdatekey
+  ),
+
+  RatesTable AS 
+  (
+  SELECT
+  productkey,
+  salesterritorykey,
+  currencykey_from,
+  currencykey_to,
+  CurrencyRates.datekey,
+  actualrate,
+  budgetedrate
+  FROM
+  CurrencyRates
+  JOIN JoiningKeys 
+  ON CurrencyRates.currencykey_from = JoiningKeys.currencykey
+  AND CurrencyRates.datekey = JoiningKeys.orderdatekey
+  )
+
+  SELECT
+  productkey,
+  salesterritorykey,
+  currencykey_from,
+  currencykey_to,
+  datekey,
+  rates,
+  ratetype
+  FROM
+  RatesTable
+  UNPIVOT 
+  (
+  rates FOR ratetype IN (actualrate, budgetedrate)
+  )

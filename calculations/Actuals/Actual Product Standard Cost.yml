@@ -1,6 +1,0 @@
-unique_name: Actual Product Standard Cost
-object_type: metric_calc
-label: Actual Product Standard Cost
-expression: '[Measures].[Total Product Cost_sum]*[Measures].[Actual Rate]'
-format: '#,###.00;(#,###.00)'
-is_hidden: false
