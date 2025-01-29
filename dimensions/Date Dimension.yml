@@ -113,14 +113,14 @@ calculation_groups:
         name: CurrentMember
         description: value of the current Member
         expression: ([Date Dimension].[Date Month Hierarchy].CurrentMember, [Measures].currentMember)
-        format: '#,###.0;(#,###.0)'
+        format: '#,###.00;(#,###.00)'
 
       - unique_name: Previous
         name: Previous
         description: Previous Member
         expression: >-
           ([Date Dimension].[Date Month Hierarchy].CurrentMember.prevMember, [Measures].currentMember)
-        format: '#,###.0;(#,###.0)'
+        format: '#,###.00;(#,###.00)'
     folder: Time Intelligence
 
 hierarchies:
