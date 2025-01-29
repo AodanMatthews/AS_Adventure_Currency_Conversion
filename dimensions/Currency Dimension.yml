@@ -55,7 +55,7 @@ hierarchies:
     label: Reporting Currency Hierarchy
     default_member: >-
       [Currency Dimension].[Reporting Currency Hierarchy].[Reporting
-      Currency].[EUR]]
+      Currency].[EUR]
     filter_empty: 'yes'
     levels:
       - unique_name: Reporting Currency
