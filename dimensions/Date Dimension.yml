@@ -14,7 +14,7 @@ calculation_groups:
             IIF ( IsEmpty ( [Measures].currentMember ) , NULL ,
             Sum(PeriodsToDate([Date Dimension].[Date Month Hierarchy].[YearMonth], [Date
             Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember))
-        format: '#,###.000;(#,###.00)'
+        format: '#,###.00;(#,###.00)'
 
       - unique_name: 2- PY YTD
         name: PY YTD
@@ -24,7 +24,7 @@ calculation_groups:
             Sum(PeriodsToDate([Date Dimension].[Date Month Hierarchy].[YearMonth],
             ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date
             Dimension].[Date Month Hierarchy].CurrentMember)), [Measures].currentMember))
-        format: '#,###.000;(#,###.00)'
+        format: '#,###.00;(#,###.00)'
 
       - unique_name: 3- CY over PY YTD
         name: CY over PY YTD
@@ -65,7 +65,7 @@ calculation_groups:
             IIF ( IsEmpty ( [Measures].currentMember ) , NULL ,
             Sum(PeriodsToDate([Date Dimension].[Date Month Hierarchy].[Month], [Date
             Dimension].[Date Month Hierarchy].CurrentMember), [Measures].currentMember))
-        format: '#,###.000;(#,###.000)'
+        format: '#,###.00;(#,###.00)'
 
       - unique_name: 2- PY MTD
         name: PY MTD
@@ -75,7 +75,7 @@ calculation_groups:
             Sum(PeriodsToDate([Date Dimension].[Date Month Hierarchy].[Month],
             ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date
             Dimension].[Date Month Hierarchy].CurrentMember)), [Measures].currentMember))
-        format: '#,###.000;(#,###.000)'
+        format: '#,###.00;(#,###.00)'
 
       - unique_name: 3- CY over PY MTD
         name: CY over PY MTD
@@ -87,7 +87,7 @@ calculation_groups:
           Sum(PeriodsToDate([Date Dimension].[Date Month Hierarchy].[Month],
           ParallelPeriod([Date Dimension].[Date Month Hierarchy].[YearMonth], 1, [Date
           Dimension].[Date Month Hierarchy].CurrentMember)), [Measures].currentMember) )
-        format: '#,###.0;(#,###.0)'
+        format: '#,###.00;(#,###.00)'
 
       - unique_name: 4- CY over PY MTD (%)
         name: 4- CY over PY MTD (%)
