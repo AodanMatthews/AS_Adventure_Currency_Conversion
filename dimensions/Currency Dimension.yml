@@ -124,7 +124,7 @@ hierarchies:
       - unique_name: Reporting Date
   - unique_name: Rate Type Hierarchy
     label: Rate Type Hierarchy
-    default_member: '[Currency Dimension].[Rate Type Hierarchy].[Rate Type].[averagerate]'
+    default_member: '[Currency Dimension].[Rate Type Hierarchy].[Rate Type].[actualrate]'
     levels:
       - unique_name: Rate Type
       - unique_name: Currency Join
