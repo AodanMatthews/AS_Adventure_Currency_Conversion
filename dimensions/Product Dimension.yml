@@ -60,4 +60,11 @@ relationships:
     to:
       level: Product Category
     type: snowflake
+  - from:
+      dataset: dimproduct
+      join_columns:
+        - productsubcategorykey
+    to:
+      level: Product Sub-Category
+    type: snowflake
 type: standard
