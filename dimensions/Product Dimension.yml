@@ -10,10 +10,6 @@ hierarchies:
       - unique_name: Product Sub-Category
       - unique_name: Product Line
       - unique_name: Product Name
-      - unique_name: Color
-      - unique_name: Size
-      - unique_name: Style
-      - unique_name: Weight
       - unique_name: Product Code
 level_attributes:
   - unique_name: Product Category
@@ -56,38 +52,6 @@ level_attributes:
     key_columns:
       - productkey
     name_column: productkey
-  - unique_name: Color
-    label: Color
-    contains_unique_names: false
-    dataset: dimproduct
-    is_unique_key: false
-    key_columns:
-      - color
-    name_column: color
-  - unique_name: Size
-    label: Size
-    contains_unique_names: false
-    dataset: dimproduct
-    is_unique_key: false
-    key_columns:
-      - size
-    name_column: size
-  - unique_name: Style
-    label: Style
-    contains_unique_names: false
-    dataset: dimproduct
-    is_unique_key: false
-    key_columns:
-      - style
-    name_column: style
-  - unique_name: Weight
-    label: Weight
-    contains_unique_names: false
-    dataset: dimproduct
-    is_unique_key: false
-    key_columns:
-      - weight
-    name_column: weight
 relationships:
   - from:
       dataset: dimproductsubcategory
@@ -95,12 +59,5 @@ relationships:
         - productcategorykey
     to:
       level: Product Category
-    type: snowflake
-  - from:
-      dataset: dimproduct
-      join_columns:
-        - productsubcategorykey
-    to:
-      level: Product Sub-Category
     type: snowflake
 type: standard
