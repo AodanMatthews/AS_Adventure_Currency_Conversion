@@ -26,7 +26,7 @@ sql: |-
   curTo.currencykey as currencykey_to,
   curFrom.datekey as datekey,
   curFrom.averagerate / curTo.averagerate as actualrate,
-  (curFrom.averagerate / curTo.averagerate)*1.05 as budgetedrate
+  curFrom.endofdayrate / curTo.endofdayrate as budgetedrate
 
   FROM
   `atscale-sales-demo.as_adventure_small_training.factcurrencyrate`  curFrom
