@@ -11,10 +11,10 @@ columns:
 connection_id: As_Adventure
 sql: |-
   SELECT
-  currencykey,
-  currencyalternatekey,
-  currencyname
+  "currencykey",
+  "currencyalternatekey",
+  "currencyname"
   FROM
-   `atscale-sales-demo.as_adventure_small_training.dimcurrency`
+   SE_DEMO_LIBRARY.AS_ADVENTURE_SMALL."dimcurrency"
   WHERE 
-  currencykey IN (6, 19, 29, 39, 98, 100)
+  "currencykey" IN (6, 19, 29, 39, 98, 100)

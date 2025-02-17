@@ -144,8 +144,8 @@ level_attributes:
     is_hidden: true
     is_unique_key: false
     key_columns:
-      - currencykey_to
-    name_column: currencykey_to
+      - CURRENCYKEY_TO
+    name_column: CURRENCYKEY_TO
   - unique_name: Reporting Currency
     label: Reporting Currency
     contains_unique_names: false
@@ -161,16 +161,16 @@ level_attributes:
     is_hidden: true
     is_unique_key: false
     key_columns:
-      - datekey
-    name_column: datekey
+      - CURRENCYKEY_TO
+    name_column: DATEKEY
   - unique_name: Rate Type
     label: Rate Type
     contains_unique_names: false
     dataset: factcurrencyrate_conversion
     is_unique_key: false
     key_columns:
-      - ratetype
-    name_column: ratetype
+      - RATETYPE
+    name_column: RATETYPE
     sort_column: ratetype
   - unique_name: Currency Join
     label: Currency Join
@@ -179,13 +179,13 @@ level_attributes:
     is_hidden: true
     is_unique_key: false
     key_columns:
-      - currencykey_to
-    name_column: currencykey_to
+      - CURRENCYKEY_TO
+    name_column: CURRENCYKEY_TO
 relationships:
   - from:
       dataset: factcurrencyrate_conversion
       join_columns:
-        - currencykey_to
+        - CURRENCYKEY_TO
     to:
       level: Reporting Currency
     type: snowflake

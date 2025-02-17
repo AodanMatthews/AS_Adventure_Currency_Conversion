@@ -102,7 +102,7 @@ relationships:
     from:
       dataset: factcurrencyrate_conversion
       join_columns:
-        - productkey
+        - PRODUCTKEY
     to:
       dimension: Product Dimension
       level: Product Code
@@ -112,7 +112,7 @@ relationships:
     from:
       dataset: factcurrencyrate_conversion
       join_columns:
-        - salesterritorykey
+        - SALESTERRITORYKEY
     to:
       dimension: Geography Dimension
       level: Geography Join
@@ -120,7 +120,7 @@ relationships:
     from:
       dataset: factcurrencyrate_conversion
       join_columns:
-        - datekey
+        -   DATEKEY
     to:
       dimension: Date Dimension
       level: W Date Key Join
@@ -128,7 +128,7 @@ relationships:
     from:
       dataset: factcurrencyrate_conversion
       join_columns:
-        - datekey
+        - DATEKEY
     to:
       dimension: Date Dimension
       level: Date Key Join
@@ -138,7 +138,7 @@ relationships:
     from:
       dataset: factcurrencyrate_conversion
       join_columns:
-        - currencykey_from
+        - CURRENCYKEY_FROM
     to:
       dimension: Currency Dimension
       level: Base Currency
@@ -162,7 +162,7 @@ relationships:
     from:
       dataset: factcurrencyrate_conversion
       join_columns:
-        - datekey
+        - DATEKEY
     to:
       dimension: Currency Dimension
       level: Reporting Date
@@ -172,7 +172,7 @@ relationships:
     from:
       dataset: factcurrencyrate_conversion
       join_columns:
-        - currencykey_to
+        - CURRENCYKEY_TO
     to:
       dimension: Currency Dimension
       level: Reporting Currency Join
@@ -182,7 +182,7 @@ relationships:
     from:
       dataset: factcurrencyrate_conversion
       join_columns:
-        - currencykey_to
+        - CURRENCYKEY_TO
     to:
       dimension: Currency Dimension
       level: Currency Join

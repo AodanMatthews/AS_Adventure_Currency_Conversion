@@ -2,55 +2,54 @@ unique_name: factcurrencyrate_conversion
 object_type: dataset
 label: factcurrencyrate_conversion
 columns:
-  - name: datekey
-    data_type: long
-  - name: currencykey_from
-    data_type: long
-  - name: currencykey_to
-    data_type: long
-  - name: productkey
-    data_type: long
-  - name: salesterritorykey
-    data_type: long
-  - name: rates
+  - name: PRODUCTKEY
+    data_type: decimal(38,0)
+  - name: SALESTERRITORYKEY
+    data_type: decimal(38,0)
+  - name: CURRENCYKEY_FROM
+    data_type: decimal(38,0)
+  - name: CURRENCYKEY_TO
+    data_type: decimal(38,0)
+  - name: DATEKEY
+    data_type: decimal(38,0)
+  - name: RATES
     data_type: double
-  - name: ratetype
+  - name: RATETYPE
     data_type: string
 connection_id: As_Adventure
 sql: |-
-
   WITH CurrencyRates AS
   (
   SELECT 
-  curFrom.currencykey as currencykey_from,
-  curTo.currencykey as currencykey_to,
-  curFrom.datekey as datekey,
-  curFrom.averagerate / curTo.averagerate as actualrate,
-  (curFrom.endofdayrate / curTo.endofdayrate) * 1.1 as budgetedrate
+  curFrom."currencykey" as currencykey_from,
+  curTo."currencykey" as currencykey_to,
+  curFrom."datekey" as datekey,
+  curFrom."averagerate" / curTo."averagerate" as actualrate,
+  (curFrom."endofdayrate" / curTo."endofdayrate") * 1.1 as budgetedrate
 
   FROM
-  `atscale-sales-demo.as_adventure_small_training.factcurrencyrate`  curFrom
-  JOIN `atscale-sales-demo.as_adventure_small_training.factcurrencyrate`  curTo
-  ON curTo.datekey = curfrom.datekey
+  SE_DEMO_LIBRARY.AS_ADVENTURE_SMALL."factcurrencyrate"  curFrom
+  JOIN SE_DEMO_LIBRARY.AS_ADVENTURE_SMALL."factcurrencyrate"  curTo
+  ON curTo."datekey" = curfrom."datekey"
   WHERE
-  curfrom.currencykey in (6, 19, 29, 39, 98, 100) and
-  curto.currencykey in (36, 98, 100)
+  curfrom."currencykey" in (6, 19, 29, 39, 98, 100) and
+  curto."currencykey" in (36, 98, 100)
   ),
 
   JoiningKeys AS
   (
   SELECT
-  productkey,
-  currencykey,
-  salesterritorykey,
-  orderdatekey
+  "productkey" as productkey,
+  "currencykey",
+  "salesterritorykey" as salesterritorykey,
+  "orderdatekey"
   FROM
-  `atscale-sales-demo.as_adventure_small_training.factinternetsales`
+  SE_DEMO_LIBRARY.AS_ADVENTURE_SMALL."factinternetsales"
   GROUP BY
-  productkey,
-  currencykey,
-  salesterritorykey,
-  orderdatekey
+  "productkey",
+  "currencykey",
+  "salesterritorykey",
+  "orderdatekey"
   ),
 
   RatesTable AS 
@@ -66,8 +65,8 @@ sql: |-
   FROM
   CurrencyRates
   JOIN JoiningKeys 
-  ON CurrencyRates.currencykey_from = JoiningKeys.currencykey
-  AND CurrencyRates.datekey = JoiningKeys.orderdatekey
+  ON CurrencyRates.currencykey_from = JoiningKeys."currencykey"
+  AND CurrencyRates.datekey = JoiningKeys."orderdatekey"
   )
 
   SELECT
