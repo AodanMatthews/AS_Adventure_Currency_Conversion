@@ -9,12 +9,12 @@ columns:
   - name: currencyname
     data_type: string
 connection_id: As_Adventure
-sql: |-
+sql: |2-
   SELECT
   currencykey,
   currencyalternatekey,
   currencyname
   FROM
-  atscale_sample_data.as_adventure_small.dimcurrency
+   atscale_inc_atscale_tutorials.adventureworks2012.dimcurrency
   WHERE 
   currencykey IN (6, 19, 29, 39, 98, 100)

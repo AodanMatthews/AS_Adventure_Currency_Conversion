@@ -2,5 +2,5 @@ unique_name: As_Adventure
 object_type: connection
 label: con_atscale-sales-demo_as_adventure_small_training
 as_connection: Databricks
-database: atscale_sample_data
-schema: as_adventure_small
+database: atscale_inc_atscale_tutorials
+schema: adventureworks2012

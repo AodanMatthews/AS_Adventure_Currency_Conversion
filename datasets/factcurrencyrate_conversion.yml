@@ -28,8 +28,8 @@ sql: |+
   (curFrom.endofdayrate / curTo.endofdayrate) * 1.1 as budgetedrate
 
   FROM
-  atscale_sample_data.as_adventure_small.factcurrencyrate curFrom
-  JOIN atscale_sample_data.as_adventure_small.factcurrencyrate  curTo
+  atscale_inc_atscale_tutorials.adventureworks2012.factcurrencyrate curFrom
+  JOIN atscale_inc_atscale_tutorials.adventureworks2012.factcurrencyrate  curTo
   ON curTo.datekey = curfrom.datekey
   WHERE
   curfrom.currencykey in (6, 19, 29, 39, 98, 100) and
@@ -44,7 +44,7 @@ sql: |+
   salesterritorykey,
   orderdatekey
   FROM
-  atscale_sample_data.as_adventure_small.factinternetsales
+  atscale_inc_atscale_tutorials.adventureworks2012.factinternetsales
   GROUP BY
   productkey,
   currencykey,
