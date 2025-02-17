@@ -2,12 +2,10 @@ unique_name: dim_time_dataset
 object_type: dataset
 label: dim_time_dataset
 columns:
-  - name: name
-    data_type: string
   - name: pk_date
     data_type: datetime
   - name: datekey
-    data_type: long
+    data_type: decimal(38,0)
   - name: date_name
     data_type: string
   - name: year
@@ -31,50 +29,53 @@ columns:
   - name: week_name
     data_type: string
   - name: day_of_year
-    data_type: int
+    data_type: decimal(4,0)
   - name: day_of_year_name
     data_type: string
   - name: day_of_week
-    data_type: int
+    data_type: decimal(2,0)
   - name: day_of_week_name
     data_type: string
   - name: week_of_year
-    data_type: int
+    data_type: decimal(2,0)
   - name: week_of_year_name
     data_type: string
   - name: month_of_year
-    data_type: int
+    data_type: decimal(2,0)
   - name: month_of_year_name
     data_type: string
   - name: quarter_of_year
-    data_type: int
+    data_type: decimal(2,0)
   - name: quarter_of_year_name
     data_type: string
+  - name: date_day
+    data_type: date
 connection_id: As_Adventure
 sql: |-
-  SELECT TIMESTAMP(date_day) as pk_date,
-          cast(FORMAT_DATE("%Y%m%d", date_day) as decimal) as datekey,
-          FORMAT_DATE('%A, %B %d, %Y', date_day) as date_name,
-          CAST(EXTRACT(YEAR from date_day) AS STRING) as year,
-          concat("Calendar ",FORMAT_DATE('%Y', date_day)) as year_name,
-          IF(EXTRACT(QUARTER FROM date_day) < 3, DATE_TRUNC(date_day,YEAR), DATE_ADD(DATE_TRUNC(date_day,YEAR), INTERVAL 2 QUARTER)) as half_year,
-          IF(EXTRACT(QUARTER FROM date_day) < 3, concat("Semester 1, ",FORMAT_DATE('%Y', date_day)), concat("Semester 2, ", FORMAT_DATE('%Y', date_day))) as half_year_name,
-          DATE_TRUNC(date_day, QUARTER) as quarter,
-          FORMAT_DATE('Quarter %Q, %Y', date_day) as quarter_name,
-          DATE_TRUNC(date_day, MONTH) as month,
-          FORMAT_DATE('%B %Y', date_day) as month_name,
-          DATE_TRUNC(date_day, WEEK) as week,
-          concat("Week ", EXTRACT(WEEK from date_day), FORMAT_DATE(', %Y', date_day)) as week_name,
-          EXTRACT(DAYOFYEAR from date_day) as day_of_year,
-          concat("Day ", EXTRACT(DAYOFYEAR from date_day)) as day_of_year_name,
-          EXTRACT(DAYOFWEEK from date_day) as day_of_week,
-          FORMAT_DATE('%a', date_day) as day_of_week_name,
-          EXTRACT(WEEK from date_day) as week_of_year,
-          concat("Week ", EXTRACT(WEEK from date_day)) as week_of_year_name,
-          EXTRACT(MONTH from date_day) as month_of_year,
-          FORMAT_DATE('%B', date_day) as month_of_year_name,
-          EXTRACT(QUARTER from date_day) as quarter_of_year,
-          concat("Quarter ", EXTRACT(QUARTER from date_day)) as quarter_of_year_name
-          FROM UNNEST(GENERATE_DATE_ARRAY(DATE('2006-01-01'), DATE('2008-07-31'), INTERVAL 1 DAY)) AS date_day
+  SELECT dateadd(day,seq,dt::date) as "date_day",
+                "date_day"::TIMESTAMP as "pk_date",
+                cast(to_char("date_day", '%Y%m%d') as decimal) as "datekey",
+                to_char("date_day", '%A, %B %d, %Y') as "date_name",
+                CAST(EXTRACT(YEAR from "date_day") AS STRING) as "year",
+                concat('Calendar ',to_char("date_day", '%Y')) as "year_name",
+                IFF(EXTRACT(QUARTER FROM "date_day") < 3, DATE_TRUNC('year', "date_day"), DATEADD('quarter', 2, DATE_TRUNC('year', "date_day"))) as "half_year",
+                IFF(EXTRACT(QUARTER FROM "date_day") < 3, concat('Semester 1, ',to_char("date_day", '%Y')), concat('Semester 2, ', to_char("date_day", '%Y')))as "half_year_name",
+                DATE_TRUNC('quarter', "date_day") as "quarter",
+                concat('Quarter ', EXTRACT(QUARTER from "date_day"), ', ', EXTRACT(YEAR from "date_day")) as "quarter_name",
+                DATE_TRUNC('month', "date_day") as "month",
+                to_char("date_day", '%B %Y') as "month_name",
+                DATE_TRUNC('week', "date_day") as "week",
+                concat('Week ', EXTRACT(WEEK from "date_day"), to_char("date_day", ', %Y')) as "week_name",
+                EXTRACT(DAYOFYEAR from "date_day") as "day_of_year",
+                concat('Day ', EXTRACT(DAYOFYEAR from "date_day")) as "day_of_year_name",
+                EXTRACT(DAYOFWEEK from "date_day") as "day_of_week",
+                DAYNAME("date_day") as "day_of_week_name",
+                EXTRACT(WEEK from "date_day") as "week_of_year",
+                concat('Week ', EXTRACT(WEEK from "date_day")) as "week_of_year_name",
+                EXTRACT(MONTH from "date_day") as "month_of_year",
+                MONTHNAME("date_day") as "month_of_year_name",
+                EXTRACT(QUARTER from "date_day") as "quarter_of_year",
+                concat('Quarter ', EXTRACT(QUARTER from "date_day")) as "quarter_of_year_name"
+                FROM (select seq4() as seq,  dateadd(month, 1, '2006-06-01'::date) dt from table(generator(rowcount => 799)))
 
      
