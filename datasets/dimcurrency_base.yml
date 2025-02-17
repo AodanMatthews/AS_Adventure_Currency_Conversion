@@ -15,6 +15,6 @@ sql: |-
   currencyalternatekey,
   currencyname
   FROM
-   `atscale-sales-demo.as_adventure_small_training.dimcurrency`
+  atscale_sample_data.as_adventure_small.dimcurrency
   WHERE 
   currencykey IN (6, 19, 29, 39, 98, 100)
