@@ -9,7 +9,6 @@ calculation_groups:
       budgeted rates
     calculated_members:
       - unique_name: Actual Rates
-        name: Metrics in Actual Rates
         description: Metrics converted using actual currency rates
         expression: >-
           [Measures].currentMember *    ([Currency Dimension].[Rate Type
@@ -18,7 +17,6 @@ calculation_groups:
           [Measures].[FX Rate])
         format: '#,###.00;(#,###.00)'
       - unique_name: Budgeted Rates
-        name: Metrics in Budgeted Rates
         description: Metrics converted using budgeted currency rates
         expression: >-
           [Measures].currentMember *    ([Currency Dimension].[Rate Type
@@ -27,7 +25,6 @@ calculation_groups:
           [Measures].[FX Rate])
         format: '#,###.00;(#,###.00)'
       - unique_name: Rate Difference
-        name: Rate Difference
         description: Difference in Metrics using Actual vs budgeted currency rates
         expression: >-
           ([Measures].currentMember *    ([Currency Dimension].[Rate Type
@@ -39,7 +36,6 @@ calculation_groups:
           [Measures].[FX Rate]))
         format: '#,###.00;(#,###.00)'
       - unique_name: Rate Difference (%)
-        name: Rate Difference (%)
         description: >-
           Percentage Difference in Metrics using Actual vs budgeted currency
           rates
@@ -63,7 +59,6 @@ calculation_groups:
       budgeted rates for CY and PY
     calculated_members:
       - unique_name: CY Rates
-        name: Metrics in CY Rates
         description: Metrics converted using CY actual currency rates
         expression: >-
           [Measures].currentMember *    ([Currency Dimension].[Rate Type
@@ -71,7 +66,6 @@ calculation_groups:
           Hierarchy].CurrentMember, [Measures].[FX Rate])
         format: '#,###.00;(#,###.00)'
       - unique_name: PY Rates
-        name: Metrics in PY Rates
         description: Metrics converted using CY actual currency rates
         expression: >-
           [Measures].currentMember *    ([Currency Dimension].[Rate Type
@@ -79,7 +73,6 @@ calculation_groups:
           Hierarchy].CurrentMember, [Measures].[PY FX Rate])
         format: '#,###.00;(#,###.00)'
       - unique_name: Rate Difference
-        name: Rate Difference
         description: Difference in Metrics using CY vs PY currency rates
         expression: >-
           ([Measures].currentMember *    ([Currency Dimension].[Rate Type
@@ -90,7 +83,6 @@ calculation_groups:
           Hierarchy].CurrentMember, [Measures].[PY FX Rate]))
         format: '#,###.00;(#,###.00)'
       - unique_name: Rate Difference (%)
-        name: Rate Difference (%)
         description: >-
           Percentage Difference in Metrics using Actual vs budgeted currency
           rates
@@ -114,9 +106,9 @@ hierarchies:
       - unique_name: Base Currency
   - unique_name: Reporting Currency Hierarchy
     label: Reporting Currency Hierarchy
-    default_member: >-
-      [Currency Dimension].[Reporting Currency Hierarchy].[Reporting
-      Currency].[EUR]
+    default_member:
+      apply_only_when_in_query: false
+      expression: '[Currency Dimension].[Reporting Currency Hierarchy].[EUR]'
     filter_empty: 'yes'
     levels:
       - unique_name: Reporting Currency
@@ -124,7 +116,9 @@ hierarchies:
       - unique_name: Reporting Date
   - unique_name: Rate Type Hierarchy
     label: Rate Type Hierarchy
-    default_member: '[Currency Dimension].[Rate Type Hierarchy].[Rate Type].[ACTUALRATE]'
+    default_member:
+      apply_only_when_in_query: false
+      expression: '[Currency Dimension].[Rate Type Hierarchy].[ACTUALRATE]'
     levels:
       - unique_name: Rate Type
       - unique_name: Currency Join
