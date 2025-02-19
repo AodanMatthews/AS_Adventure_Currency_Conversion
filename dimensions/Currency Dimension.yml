@@ -157,7 +157,7 @@ level_attributes:
     is_hidden: true
     is_unique_key: false
     key_columns:
-      - CURRENCYKEY_TO
+      - DATEKEY
     name_column: DATEKEY
   - unique_name: Rate Type
     label: Rate Type
