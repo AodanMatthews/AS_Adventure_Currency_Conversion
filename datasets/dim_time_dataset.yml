@@ -53,7 +53,7 @@ columns:
 connection_id: As_Adventure
 sql: |-
   SELECT TIMESTAMP(date_day) as pk_date,
-          cast(FORMAT_DATE("%Y%m%d", date_day) as decimal) as datekey,
+          cast(FORMAT_DATE("%Y%m%d", date_day) as INT) as datekey,
           FORMAT_DATE('%A, %B %d, %Y', date_day) as date_name,
           CAST(EXTRACT(YEAR from date_day) AS STRING) as year,
           concat("Calendar ",FORMAT_DATE('%Y', date_day)) as year_name,
