@@ -5,7 +5,7 @@ columns:
   - name: pk_date
     data_type: datetime
   - name: datekey
-    data_type: decimal(38,0)
+    data_type: long
   - name: date_name
     data_type: string
   - name: year
