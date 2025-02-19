@@ -108,7 +108,9 @@ hierarchies:
     label: Reporting Currency Hierarchy
     default_member:
       apply_only_when_in_query: false
-      expression: '[Currency Dimension].[Reporting Currency Hierarchy].[EUR]'
+      expression: >-
+        [Currency Dimension].[Reporting Currency Hierarchy].[Reporting
+        Currency].[EUR]
     filter_empty: 'yes'
     levels:
       - unique_name: Reporting Currency
@@ -118,7 +120,7 @@ hierarchies:
     label: Rate Type Hierarchy
     default_member:
       apply_only_when_in_query: false
-      expression: '[Currency Dimension].[Rate Type Hierarchy].[ACTUALRATE]'
+      expression: '[Currency Dimension].[Rate Type Hierarchy].[Rate Type].[ACTUALRATE]'
     levels:
       - unique_name: Rate Type
       - unique_name: Currency Join
