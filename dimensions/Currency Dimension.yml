@@ -12,7 +12,7 @@ calculation_groups:
         description: Metrics converted using actual currency rates
         expression: >-
           [Measures].currentMember *    ([Currency Dimension].[Rate Type
-          Hierarchy].[Rate Type].&[actualrate],   [Currency
+          Hierarchy].[Rate Type].&[ACTUALRATE],   [Currency
           Dimension].[Reporting Currency Hierarchy].CurrentMember,
           [Measures].[FX Rate])
         format: '#,###.00;(#,###.00)'
@@ -20,7 +20,7 @@ calculation_groups:
         description: Metrics converted using budgeted currency rates
         expression: >-
           [Measures].currentMember *    ([Currency Dimension].[Rate Type
-          Hierarchy].[Rate Type].&[budgetedrate],   [Currency
+          Hierarchy].[Rate Type].&[BUDGETEDRATE],   [Currency
           Dimension].[Reporting Currency Hierarchy].CurrentMember,
           [Measures].[FX Rate])
         format: '#,###.00;(#,###.00)'
@@ -28,10 +28,10 @@ calculation_groups:
         description: Difference in Metrics using Actual vs budgeted currency rates
         expression: >-
           ([Measures].currentMember *    ([Currency Dimension].[Rate Type
-          Hierarchy].[Rate Type].&[actualrate],   [Currency
+          Hierarchy].[Rate Type].&[ACTUALRATE],   [Currency
           Dimension].[Reporting Currency Hierarchy].CurrentMember,
           [Measures].[FX Rate])) -  ([Measures].currentMember *    ([Currency
-          Dimension].[Rate Type Hierarchy].[Rate Type].&[budgetedrate],  
+          Dimension].[Rate Type Hierarchy].[Rate Type].&[BUDGETEDRATE],  
           [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember,
           [Measures].[FX Rate]))
         format: '#,###.00;(#,###.00)'
@@ -41,13 +41,13 @@ calculation_groups:
           rates
         expression: >-
           DIVIDE(([Measures].currentMember *    ([Currency Dimension].[Rate Type
-          Hierarchy].[Rate Type].&[actualrate],   [Currency
+          Hierarchy].[Rate Type].&[ACTUALRATE],   [Currency
           Dimension].[Reporting Currency Hierarchy].CurrentMember,
           [Measures].[FX Rate])) -  ([Measures].currentMember *    ([Currency
-          Dimension].[Rate Type Hierarchy].[Rate Type].&[budgetedrate],  
+          Dimension].[Rate Type Hierarchy].[Rate Type].&[BUDGETEDRATE],  
           [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember,
           [Measures].[FX Rate])), ([Measures].currentMember *    ([Currency
-          Dimension].[Rate Type Hierarchy].[Rate Type].&[budgetedrate],  
+          Dimension].[Rate Type Hierarchy].[Rate Type].&[BUDGETEDRATE],  
           [Currency Dimension].[Reporting Currency Hierarchy].CurrentMember,
           [Measures].[FX Rate])))
         format: percent
