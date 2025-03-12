@@ -102,8 +102,7 @@ hierarchies:
   - unique_name: Base Currency Hierarchy
     label: Base Currency Hierarchy
     filter_empty: 'yes'
-    levels:
-      - unique_name: Base Currency
+    levels: []
   - unique_name: Reporting Currency Hierarchy
     label: Reporting Currency Hierarchy
     default_member:
@@ -125,14 +124,6 @@ hierarchies:
       - unique_name: Rate Type
       - unique_name: Currency Join
 level_attributes:
-  - unique_name: Base Currency
-    label: Base Currency
-    contains_unique_names: false
-    dataset: dimcurrency_base
-    is_unique_key: false
-    key_columns:
-      - currencykey
-    name_column: currencyalternatekey
   - unique_name: Reporting Currency Join
     label: Reporting Currency Join
     contains_unique_names: false
