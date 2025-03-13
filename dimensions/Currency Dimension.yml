@@ -102,7 +102,8 @@ hierarchies:
   - unique_name: Base Currency Hierarchy
     label: Base Currency Hierarchy
     filter_empty: 'yes'
-    levels: []
+    levels:
+      - unique_name: Base Currency
   - unique_name: Reporting Currency Hierarchy
     label: Reporting Currency Hierarchy
     default_member:
@@ -168,6 +169,14 @@ level_attributes:
     key_columns:
       - currencykey_to
     name_column: currencykey_to
+  - unique_name: Base Currency
+    label: Base Currency
+    contains_unique_names: false
+    dataset: dimcurrency_base
+    is_unique_key: false
+    key_columns:
+      - currencykey
+    name_column: currencyalternatekey
 relationships:
   - from:
       dataset: factcurrencyrate_conversion
