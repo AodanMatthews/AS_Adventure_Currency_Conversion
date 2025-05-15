@@ -120,7 +120,7 @@ hierarchies:
     label: Rate Type Hierarchy
     default_member:
       apply_only_when_in_query: false
-      expression: '[Rate Type Dimension].[Rate Type Hierarchy].[Rate type].[actualrate]'
+      expression: '[Currency Dimension].[Rate Type Hierarchy].[Rate type].[actualrate]'
     levels:
       - unique_name: Rate Type
       - unique_name: Currency Join
