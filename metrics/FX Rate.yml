@@ -5,3 +5,4 @@ calculation_method: average
 column: rates
 dataset: factcurrencyrate_conversion
 format: '#,###.000;(#,###.000)'
+unrelated_dimensions_handling: repeat

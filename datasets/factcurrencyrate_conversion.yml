@@ -8,10 +8,6 @@ columns:
     data_type: long
   - name: currencykey_to
     data_type: long
-  - name: productkey
-    data_type: long
-  - name: salesterritorykey
-    data_type: long
   - name: rates
     data_type: double
   - name: ratetype
@@ -35,51 +31,17 @@ sql: |-
   WHERE
   curfrom.currencykey in (6, 19, 29, 39, 98, 100) and
   curto.currencykey in (36, 98, 100)
-  ),
-
-  JoiningKeys AS
-  (
-  SELECT
-  productkey,
-  currencykey,
-  salesterritorykey,
-  orderdatekey
-  FROM
-  `atscale-sales-demo.as_adventure_small_training.factinternetsales`
-  GROUP BY
-  productkey,
-  currencykey,
-  salesterritorykey,
-  orderdatekey
-  ),
-
-  RatesTable AS 
-  (
-  SELECT
-  productkey,
-  salesterritorykey,
-  currencykey_from,
-  currencykey_to,
-  CurrencyRates.datekey,
-  actualrate,
-  budgetedrate
-  FROM
-  CurrencyRates
-  JOIN JoiningKeys 
-  ON CurrencyRates.currencykey_from = JoiningKeys.currencykey
-  AND CurrencyRates.datekey = JoiningKeys.orderdatekey
   )
 
+
   SELECT
-  productkey,
-  salesterritorykey,
   currencykey_from,
   currencykey_to,
   datekey,
   rates,
   ratetype
   FROM
-  RatesTable
+  CurrencyRates
   UNPIVOT 
   (
   rates FOR ratetype IN (actualrate, budgetedrate)
