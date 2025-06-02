@@ -48,6 +48,7 @@ metrics:
     folder: Base Currency Metrics
   - unique_name: Total Product Cost_sum
     folder: Base Currency Metrics
+  - unique_name: Reporting Sales Amount_agg
 relationships:
   - unique_name: factinternetsales_productkey_to_Product Dimension_Product Code
     from:
@@ -121,22 +122,6 @@ relationships:
     to:
       dimension: Currency Dimension
       level: Base Currency
-  - unique_name: factinternetsales_orderdatekey_to_Currency Dimension_Reporting Date
-    from:
-      dataset: factinternetsales
-      join_columns:
-        - orderdatekey
-    to:
-      dimension: Currency Dimension
-      level: Reporting Date
-  - unique_name: factcurrencyrate_conversion_datekey_to_Currency Dimension_Reporting Date
-    from:
-      dataset: factcurrencyrate_conversion
-      join_columns:
-        - datekey
-    to:
-      dimension: Currency Dimension
-      level: Reporting Date
   - unique_name: >-
       factcurrencyrate_conversion_currencykey_to_to_Currency Dimension_Reporting
       Currency Join
@@ -167,3 +152,19 @@ relationships:
     to:
       dimension: Currency Dimension
       level: Base Currency
+  - unique_name: factcurrencyrate_conversion_datekey_to_Currency Dimension_Reporting Date
+    from:
+      dataset: factcurrencyrate_conversion
+      join_columns:
+        - datekey
+    to:
+      dimension: Currency Dimension
+      level: Reporting Date
+  - unique_name: factinternetsales_orderdatekey_to_Currency Dimension_Reporting Date
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - orderdatekey
+    to:
+      dimension: Currency Dimension
+      level: Reporting Date

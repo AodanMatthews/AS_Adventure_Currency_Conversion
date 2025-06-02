@@ -1,0 +1,21 @@
+unique_name: Reporting Sales Amount_agg
+object_type: metric_calc
+label: Reporting Sales Amount_agg
+expression: |-
+  SUM(
+      CrossJoin(
+      Descendants(
+          [Date Dimension].[Date Month Hierarchy].CurrentMember,
+          [Date Dimension].[Date Month Hierarchy].[DayMonth],
+          SELF
+      ),
+      Descendants(
+          [Currency Dimension].[Base Currency Hierarchy].CurrentMember,
+          [Currency Dimension].[Base Currency Hierarchy].[Base Currency],
+          SELF
+      )
+      ),
+      [Measures].[Sales Amount_sum] * [Measures].[FX Rate]
+  )
+format: '#,###.00;(#,###.00)'
+is_hidden: false
