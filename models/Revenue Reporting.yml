@@ -168,3 +168,11 @@ relationships:
     to:
       dimension: Currency Dimension
       level: Reporting Date
+  - unique_name: factcurrencyrate_conversion_ratetype_to_Currency Dimension_Rate Type
+    from:
+      dataset: factcurrencyrate_conversion
+      join_columns:
+        - ratetype
+    to:
+      dimension: Currency Dimension
+      level: Rate Type
