@@ -5,3 +5,4 @@ calculation_method: sum
 column: salesamount
 dataset: factinternetsales
 format: '#,###.00;(#,###.00)'
+unrelated_dimensions_handling: repeat

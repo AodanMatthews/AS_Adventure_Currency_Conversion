@@ -1,6 +1,6 @@
-unique_name: factcurrencyrate_conversion
+unique_name: ratetype
 object_type: dataset
-label: factcurrencyrate_conversion
+label: ratetype
 columns:
   - name: currencykey_from
     data_type: long
@@ -32,9 +32,6 @@ sql: |-
 
 
   SELECT
-  currencykey_from,
-  currencykey_to,
-  rates,
   ratetype
   FROM
   CurrencyRates
@@ -42,3 +39,5 @@ sql: |-
   (
   rates FOR ratetype IN (actualrate, budgetedrate)
   )
+  GROUP BY 
+  ratetype

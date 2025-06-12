@@ -4,18 +4,18 @@ label: Reporting Sales Amount_agg
 expression: |-
   SUM(
       CrossJoin(
-      Descendants(
-          [Date Dimension].[Date Month Hierarchy].CurrentMember,
-          [Date Dimension].[Date Month Hierarchy].[DayMonth],
-          SELF
-      ),
-      Descendants(
+          Descendants(
           [Currency Dimension].[Base Currency Hierarchy].CurrentMember,
           [Currency Dimension].[Base Currency Hierarchy].[Base Currency],
           SELF
+      ),
+          Descendants(
+          [Currency Dimension].[Currency Join Hierarchy].CurrentMember,
+          [Currency Dimension].[Currency Join Hierarchy].[Base 2 Currency],
+          SELF
       )
       ),
-      [Measures].[Sales Amount_sum] * [Measures].[FX Rate]
+      [Measures].[Reporting Sales Amount]
   )
 format: '#,###.00;(#,###.00)'
 is_hidden: false
